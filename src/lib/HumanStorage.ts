@@ -26,5 +26,20 @@ export const humans = {
             return Object.assign({}, h, { available: !h.available })
         }
         return h;
-    }))
+    })),
+    killHumans: (n: number = 1) => {
+        let killed = 0;
+
+        update((ls) => {
+            return ls.filter((h) => {
+                if (h.available && killed < n) {
+                    killed++;
+                    return false;
+                }
+                return true;
+            })
+        })
+
+        return killed;
+    }
 }

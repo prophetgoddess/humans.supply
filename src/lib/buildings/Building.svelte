@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { BuildingData, built } from '$lib/BuildingStorage';
 	import { HumanData, humans } from '$lib/HumanStorage';
+	import { money } from '$lib/MoneyStorage';
 
 	export let data: BuildingData;
 
@@ -11,6 +12,7 @@
 		let newBuilding = Object.create(data);
 		newBuilding.purchased = true;
 		$built = [...$built, newBuilding];
+		money.update((n) => n - data.cost);
 	}
 
 	function toggleActivation() {
@@ -42,19 +44,21 @@
 	}, 1000);
 </script>
 
-<div>
-	{data.name}
+<div class="panel">
+	<span>{data.name}</span>
 	{#if data.purchased}
-		<button on:click={toggleActivation}>
-			{#if activated}
-				Deactivate
-			{:else}
-				Activate
-			{/if}
-		</button>
+		<span>
+			<button on:click={toggleActivation}>
+				{#if activated}
+					Deactivate
+				{:else}
+					Activate
+				{/if}
+			</button>
+		</span>
 
-		<span
-			>Users:
+		<span>
+			Workers:
 			<button on:click={freeHuman}>-</button>
 			{users.length}
 			{#if users.length < data.capacity}
@@ -64,6 +68,7 @@
 			{/if}
 		</span>
 	{:else}
+		${data.cost}
 		<button on:click={build}>Build</button>
 	{/if}
 </div>
