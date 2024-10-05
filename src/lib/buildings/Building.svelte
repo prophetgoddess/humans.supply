@@ -8,8 +8,9 @@
 	let users: HumanData[] = [];
 
 	function build() {
-		let newBuilding = structuredClone(data);
+		let newBuilding = Object.create(data);
 		newBuilding.purchased = true;
+		data = newBuilding;
 		$built = [...$built, newBuilding];
 	}
 
@@ -33,6 +34,10 @@
 			humans.toggleAvailable(human.id);
 		}
 	}
+
+	setInterval(() => {
+		data.tick(users);
+	}, 1000);
 </script>
 
 <div>
