@@ -26,7 +26,7 @@
 
 <div class="panel">
 	<div class="panel" style="grid-column: 1/2">
-		<h3>Available Buildings</h3>
+		<h3>Available Facilities</h3>
 		{#each available as building}
 			<Building entity={building} />
 		{/each}

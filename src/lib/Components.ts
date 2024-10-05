@@ -30,35 +30,31 @@ export class Working extends Component {
 
 // FACILITY COMPONENTS
 
+export enum FacilityType {
+    Processor,
+    Worker
+}
+
 export class Facility extends Component {
     capacity: number;
     cost: number;
     purchased: boolean;
     unlocked: boolean;
+    type: FacilityType;
 
     constructor(
         capacity: number,
         cost: number,
+        type: FacilityType,
         unlocked: boolean = false,
         purchased: boolean = false,) {
         super("Facility");
 
         this.capacity = capacity;
         this.cost = cost;
+        this.type = type;
         this.unlocked = unlocked;
         this.purchased = purchased;
-    }
-}
-
-export class WorkerFacility extends Component {
-    constructor() {
-        super("WorkerFacility");
-    }
-}
-
-export class ProcessorFacility extends Component {
-    constructor() {
-        super("ProcessorFacility");
     }
 }
 
@@ -71,5 +67,11 @@ export class ReproductionChamber extends Component {
 export class MeatGrinder extends Component {
     constructor() {
         super(names.MeatGrinder.singular);
+    }
+}
+
+export class SolitaryConfinement extends Component {
+    constructor() {
+        super(names.SolitaryConfinement.singular);
     }
 }
