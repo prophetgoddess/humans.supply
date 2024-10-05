@@ -4,8 +4,6 @@
 </script>
 
 <div class="panel">
-	<h2>Buildings</h2>
-
 	<div class="panel" style="grid-column: 1/2">
 		<h3>Available Buildings</h3>
 		{#each $available as building}
@@ -14,7 +12,6 @@
 	</div>
 
 	<div class="panel" style="grid-column: 2/2">
-		<h3>Finished Buildings</h3>
 		{#each $built as building}
 			<Building data={building} />
 		{/each}

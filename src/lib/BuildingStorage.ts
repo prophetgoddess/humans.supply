@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import { humans, HumanData } from './HumanStorage';
-import { money } from './MoneyStorage'
+import { money } from './ProgressStorage'
 
 export class BuildingData {
     name: string;
@@ -62,9 +62,26 @@ export class MeatGrinder extends BuildingData {
     }
 }
 
+export class SolitaryConfinement extends BuildingData {
+    constructor() {
+        super(
+            "Solitary Confinement",
+            true,
+            10,
+            200
+        );
+    }
+    tick(users: HumanData[]) {
+        humans.makeObedient(
+            Math.round(Math.random() * users.length)
+        );
+    }
+}
+
 export const built = writable<BuildingData[]>([])
 export const available = writable<BuildingData[]>([
     new ReproductionChamber(),
-    new MeatGrinder()
+    new MeatGrinder(),
+    new SolitaryConfinement()
 ])
 

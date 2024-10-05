@@ -5,11 +5,15 @@ export class HumanData {
     id: string;
     mood: number;
     available: boolean;
+    obedient: boolean;
+    rude: boolean;
 
     constructor() {
         this.id = uuidv4();
         this.mood = 0.0;
         this.available = true;
+        this.obedient = false;
+        this.rude = false;
     }
 }
 
@@ -40,5 +44,26 @@ export const humans = {
         })
 
         return killed;
+    },
+    makeObedient: (n: number = 1) => {
+        let obedient = 0;
+
+        update((ls) => {
+            return ls.map((h) => {
+                if (h.available && obedient < n) {
+                    if (Math.random() < 0.1) {
+                        obedient++;
+                        h.rude = true;
+                        return h;
+                    }
+                    else {
+                        obedient++;
+                        h.obedient = true;
+                        return h;
+                    }
+                }
+                return h;
+            })
+        })
     }
 }

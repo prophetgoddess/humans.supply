@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { humans } from '$lib/HumanStorage';
-	import { money } from '$lib/MoneyStorage';
+	import { money } from '$lib/ProgressStorage';
 
 	$: population = $humans.length;
 	$: averageMood = $humans.reduce((total: number, { mood }) => total + mood, 0) / population;
