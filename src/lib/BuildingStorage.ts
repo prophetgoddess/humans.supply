@@ -55,7 +55,7 @@ export class MeatGrinder extends BuildingData {
     }
     tick(users: HumanData[]) {
         let killed = humans.killHumans(
-            users.length
+            Math.round(Math.random() * users.length)
         )
 
         money.update((n) => n + killed * 3);

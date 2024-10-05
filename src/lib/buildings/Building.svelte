@@ -9,10 +9,12 @@
 	let users: HumanData[] = [];
 
 	function build() {
-		let newBuilding = Object.create(data);
-		newBuilding.purchased = true;
-		$built = [...$built, newBuilding];
-		money.update((n) => n - data.cost);
+		if ($money >= data.cost) {
+			let newBuilding = Object.create(data);
+			newBuilding.purchased = true;
+			$built = [...$built, newBuilding];
+			money.update((n) => n - data.cost);
+		}
 	}
 
 	function toggleActivation() {
