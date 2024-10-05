@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Human, Working, type Facility, type Money } from '$lib/Components';
+	import { names } from '$lib/data/Names';
 	import { Entity, world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
 
@@ -58,17 +59,21 @@
 	}
 
 	function getFacilityName() {
-		return entity.components.reduce((id, c) => {
-			if (c.id === 'ReproductionChamber') {
-				return c.id;
+		for (let component of entity.components) {
+			for (const [k, v] of Object.entries(names)) {
+				if (v.singular === component.id) {
+					return v.singular;
+				}
 			}
-			return id;
-		}, data.id);
+		}
+		return data.id;
 	}
 
 	tick.subscribe((value) => {
 		if (data !== undefined && data.purchased) {
-			if (entity.components.find((c) => c.id === 'ReproductionChamber') !== undefined) {
+			if (
+				entity.components.find((c) => c.id === names.ReproductionChamber.singular) !== undefined
+			) {
 				let couples = Math.floor(users.length / 2);
 
 				for (let i = 0; i < couples; i++) {

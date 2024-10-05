@@ -1,3 +1,4 @@
+import { names } from "./data/Names";
 import { Component } from "./EntityStorage";
 
 // GENERAL COMPONENTS
@@ -63,12 +64,12 @@ export class ProcessorFacility extends Component {
 
 export class ReproductionChamber extends Component {
     constructor() {
-        super("ReproductionChamber");
+        super(names.ReproductionChamber.singular);
     }
 }
 
 export class MeatGrinder extends Component {
     constructor() {
-        super("MeatGrinder");
+        super(names.MeatGrinder.singular);
     }
 }
