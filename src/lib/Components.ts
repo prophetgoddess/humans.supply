@@ -12,6 +12,14 @@ export class Money extends Component {
     }
 }
 
+export class Name extends Component {
+    value: string;
+    constructor(value: string) {
+        super("Name");
+        this.value = value;
+    }
+}
+
 // HUMAN COMPONENTS
 
 export class Human extends Component {

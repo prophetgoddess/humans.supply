@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FacilityType, Human, Working, type Facility, type Money } from '$lib/Components';
+	import { FacilityType, Human, Name, Working, type Facility, type Money } from '$lib/Components';
 	import { names } from '$lib/data/Names';
 	import { Entity, world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
@@ -22,6 +22,8 @@
 	$: humans = $world.filter((e) => e.components.find((c) => c.id === 'Human') !== undefined);
 
 	$: data = entity.components.find((c) => c.id === 'Facility') as Facility;
+
+	$: name = (entity.components.find((c) => c.id === 'Name') as Name).value;
 
 	function build() {
 		if (money >= data.cost) {
@@ -61,17 +63,6 @@
 		if (human !== undefined) {
 			world.removeComponent(human, 'Working');
 		}
-	}
-
-	function getFacilityName() {
-		for (let component of entity.components) {
-			for (const [k, v] of Object.entries(names)) {
-				if (v.singular === component.id) {
-					return v.singular;
-				}
-			}
-		}
-		return data.id;
 	}
 
 	tick.subscribe((value) => {
@@ -124,7 +115,7 @@
 </script>
 
 <div class="panel">
-	<span>{getFacilityName()}</span>
+	<span>{name}</span>
 	{#if data.purchased}
 		{#if data.type === FacilityType.Worker}
 			<span>
