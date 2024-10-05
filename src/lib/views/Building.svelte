@@ -126,17 +126,6 @@
 						makeRude(user);
 					}
 				}
-
-				let human = humans.find(
-					(h) =>
-						h.components.find((c) => c.id === 'Working') === undefined &&
-						h.components.find((c) => c.id === 'Rude') === undefined &&
-						h.components.find((c) => c.id === 'Obedient') === undefined
-				);
-				if (human !== undefined) {
-					users = [...users, human];
-					world.setComponent(human, new Working());
-				}
 			}
 		}
 	});
