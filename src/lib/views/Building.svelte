@@ -57,16 +57,25 @@
 		}
 	}
 
+	function getFacilityName() {
+		return entity.components.reduce((id, c) => {
+			if (c.id === 'ReproductionChamber') {
+				return c.id;
+			}
+			return id;
+		}, data.id);
+	}
+
 	tick.subscribe((value) => {
 		if (data !== undefined && data.purchased) {
-			console.log('purchased');
 			if (entity.components.find((c) => c.id === 'ReproductionChamber') !== undefined) {
 				let couples = Math.floor(users.length / 2);
 
 				for (let i = 0; i < couples; i++) {
-					let h = world.createEntity();
-					world.setComponent(h, new Human());
-					console.log('birth');
+					if (Math.random() <= 0.2) {
+						let h = world.createEntity();
+						world.setComponent(h, new Human());
+					}
 				}
 			}
 		}
@@ -74,7 +83,7 @@
 </script>
 
 <div class="panel">
-	<span>{data.id}</span>
+	<span>{getFacilityName()}</span>
 	{#if data.purchased}
 		<span>
 			Workers:
