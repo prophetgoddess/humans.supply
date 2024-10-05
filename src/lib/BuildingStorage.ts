@@ -5,28 +5,36 @@ export class BuildingData {
     name: string;
     unlocked: boolean;
     purchased: boolean;
+    capacity: number;
     tick(users: HumanData[]): void { }
 
-    constructor(name: string, unlocked: boolean) {
+    constructor(name: string, unlocked: boolean, capacity: number) {
         this.name = name;
         this.unlocked = unlocked;
+        this.capacity = capacity;
         this.purchased = false;
     }
 }
 
 export class ReproductionChamber extends BuildingData {
     constructor(
-        name: string = "Reproduction Chamber",
-        unlocked: boolean = true
     ) {
-        super(name, unlocked)
+        super(
+            "Reproduction Chamber",
+            true,
+            10)
     }
     tick(users: HumanData[]) {
-        console.log("tick");
         let couples = Math.floor(users.length / 2);
 
         for (let i = 0; i < couples; i++) {
-            humans.createHuman()
+            if (Math.random() <= 0.5) {
+                humans.createHuman()
+
+                if (Math.random() <= 0.01) {
+                    humans.createHuman()
+                }
+            }
         }
     }
 }

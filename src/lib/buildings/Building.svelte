@@ -10,7 +10,6 @@
 	function build() {
 		let newBuilding = Object.create(data);
 		newBuilding.purchased = true;
-		data = newBuilding;
 		$built = [...$built, newBuilding];
 	}
 
@@ -19,6 +18,9 @@
 	}
 
 	function assignHuman() {
+		if (data.capacity <= users.length) {
+			return;
+		}
 		let human = $humans.find((h) => h.available);
 		if (human !== undefined) {
 			users = [...users, human];
@@ -55,7 +57,11 @@
 			>Users:
 			<button on:click={freeHuman}>-</button>
 			{users.length}
-			<button on:click={assignHuman}>+</button>
+			{#if users.length < data.capacity}
+				<button on:click={assignHuman}>+</button>
+			{:else}
+				(MAX)
+			{/if}
 		</span>
 	{:else}
 		<button on:click={build}>Build</button>
