@@ -7,7 +7,6 @@
 	import { world } from '$lib/EntityStorage';
 	import {
 		Facility,
-		FacilityType,
 		Human,
 		MeatGrinder,
 		Money,
@@ -18,17 +17,17 @@
 	import { names } from '$lib/data/Names';
 
 	let reproductionChamber = world.createEntity();
-	world.setComponent(reproductionChamber, new Facility(10, 50, FacilityType.Worker, true));
+	world.setComponent(reproductionChamber, new Facility(10, 50, true));
 	world.setComponent(reproductionChamber, new ReproductionChamber());
 	world.setComponent(reproductionChamber, new Name(names.ReproductionChamber.singular));
 
 	let meatGrinder = world.createEntity();
-	world.setComponent(meatGrinder, new Facility(10, 50, FacilityType.Processor, true));
+	world.setComponent(meatGrinder, new Facility(10, 50, true));
 	world.setComponent(meatGrinder, new MeatGrinder());
 	world.setComponent(meatGrinder, new Name(names.MeatGrinder.singular));
 
 	let solitaryConfinement = world.createEntity();
-	world.setComponent(solitaryConfinement, new Facility(10, 50, FacilityType.Processor, true));
+	world.setComponent(solitaryConfinement, new Facility(10, 50, true));
 	world.setComponent(solitaryConfinement, new SolitaryConfinement());
 	world.setComponent(solitaryConfinement, new Name(names.SolitaryConfinement.singular));
 

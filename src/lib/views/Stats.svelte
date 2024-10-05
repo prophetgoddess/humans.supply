@@ -8,10 +8,31 @@
 		}
 		return total;
 	}, 0);
+
 	$: freeHumans = $world.reduce((total, e) => {
 		if (
 			e.components.find((c) => c.id === 'Human') !== undefined &&
 			e.components.find((c) => c.id === 'Working') === undefined
+		) {
+			return total + 1;
+		}
+		return total;
+	}, 0);
+
+	$: rudeHumans = $world.reduce((total, e) => {
+		if (
+			e.components.find((c) => c.id === 'Human') !== undefined &&
+			e.components.find((c) => c.id === 'Rude') !== undefined
+		) {
+			return total + 1;
+		}
+		return total;
+	}, 0);
+
+	$: obedientHumans = $world.reduce((total, e) => {
+		if (
+			e.components.find((c) => c.id === 'Human') !== undefined &&
+			e.components.find((c) => c.id === 'Obedient') !== undefined
 		) {
 			return total + 1;
 		}
@@ -34,5 +55,11 @@
 	<h2>Stats</h2>
 	Total Humans: {population}
 	| Unused Humans: {freeHumans}
+	{#if obedientHumans > 0}
+		| Obedient Humans: {obedientHumans}
+	{/if}
+	{#if rudeHumans > 0}
+		| Rude Humans: {rudeHumans}
+	{/if}
 	| Average Mood: 0 | Money: {money}
 </div>

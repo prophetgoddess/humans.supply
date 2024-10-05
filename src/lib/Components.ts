@@ -36,31 +36,35 @@ export class Working extends Component {
     }
 }
 
-// FACILITY COMPONENTS
-
-export enum FacilityType {
-    Processor,
-    Worker
+export class Rude extends Component {
+    constructor() {
+        super("Rude");
+    }
 }
+
+export class Obedient extends Component {
+    constructor() {
+        super("Obedient");
+    }
+}
+
+// FACILITY COMPONENTS
 
 export class Facility extends Component {
     capacity: number;
     cost: number;
     purchased: boolean;
     unlocked: boolean;
-    type: FacilityType;
 
     constructor(
         capacity: number,
         cost: number,
-        type: FacilityType,
         unlocked: boolean = false,
         purchased: boolean = false,) {
         super("Facility");
 
         this.capacity = capacity;
         this.cost = cost;
-        this.type = type;
         this.unlocked = unlocked;
         this.purchased = purchased;
     }
