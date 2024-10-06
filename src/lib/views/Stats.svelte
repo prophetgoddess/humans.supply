@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Money } from '$lib/Components';
 	import { world } from '$lib/EntityStorage';
+	import { tick } from '$lib/Time';
 
 	$: population = $world.reduce((total, e) => {
 		if (e.components.find((c) => c.id === 'Human') !== undefined) {
@@ -49,6 +50,11 @@
 		return total;
 	}, 0);
 	//$: averageMood = humans.reduce((total: number, { mood }) => total + mood, 0) / population;
+
+	tick.subscribe((value) => {
+		if (population > 2) {
+		}
+	});
 </script>
 
 <div class="panel">

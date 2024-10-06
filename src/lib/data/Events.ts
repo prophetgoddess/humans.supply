@@ -39,7 +39,7 @@ export const names = {
     rude_human_11: {
         text: "Humans have claimed their first Gargelmaxian victim. They climbed into one of your staffers' airways and cut them up from the inside. It's too gruesome to think about!"
     },
-    rude_human_12 {
+    rude_human_12: {
         text: "Gargelmaxians entering the facility now wear impermeable airway masks, to prevent small humans from climbing inside them and butchering them from the inside out."
     }
 }
