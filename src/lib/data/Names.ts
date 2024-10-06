@@ -62,7 +62,7 @@ export const names = {
     NormalHumans: {
         singular: "Human",
         plural: "Humans",
-        description: "Unspecialized (or \"raw\") humans can perform most tasks at a low skill level. Simple processing can transform them into a variety of useful export commodities. Humans will eat one another as food, provided the material is put through a minimum level of industrial processing. Their mood is fickle, but can be kept in check by a wise manager."
+        description: "Unspecialized (or \"raw\") humans are a useful biomatter resource. Simple processing can transform them into a variety of export commodities. Humans will eat one another as food, provided the material is put through a minimum level of industrial processing."
     },
     ObedientHumans: {
         singular: "Obedient Human",
@@ -72,7 +72,7 @@ export const names = {
     RudeHumans: {
         singular: "Rude Human",
         plural: "Rude Humans",
-        description: "Humans are weak and unreliable. Most industrial processes create unacceptable quantities of waste humans - too unreliable, aggressive, and rebellious to manage. Their digestive acids can be used in the creation of industrial solvents."
+        description: "Humans are weak and unreliable. Most industrial processes create unacceptable quantities of waste humans - aggressive, rebellious, and good at hiding. Their digestive acids can be used in the creation of industrial solvents."
     },
     HeartyHumans: {
         singular: "Hearty Human",
@@ -92,7 +92,7 @@ export const names = {
     AlienLovingHuman: {
         single: "Gargelmax-Loving Human",
         plural: "Gargelmax-Loving Humans",
-        description: "Some obedient humans are suitable for further training. These wise, trustworthy Gargelmax-loving humans have fully accepted their place in Gargelmax society, and can be trusted with more complex responsibilities."
+        description: "These wise, trustworthy Gargelmax-loving humans have fully accepted their place in Gargelmax society, and can be trusted with more complex responsibilities."
     },
     HumanFeed: {
         single: "Human Feed",
