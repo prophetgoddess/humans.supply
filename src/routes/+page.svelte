@@ -35,7 +35,7 @@
 
 	let singleton = world.createEntity();
 	world.setComponent(singleton, new Money(200));
-	world.setComponent(singleton, new Rudeness(1));
+	world.setComponent(singleton, new Rudeness(0.01));
 
 	let h = world.createEntity();
 	world.setComponent(h, new Human());
@@ -63,7 +63,7 @@
 		if (singleton != undefined) {
 			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
 			if (rudeness != undefined) {
-				var newRudeness = Math.round(Math.log(rudeHumans * 10));
+				var newRudeness = Math.log(rudeHumans * 10) * 0.01;
 				world.setComponent(singleton, new Rudeness(newRudeness));
 			}
 		}

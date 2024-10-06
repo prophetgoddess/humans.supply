@@ -35,12 +35,11 @@
 
 	$: name = (entity.components.find((c) => c.id === 'Name') as Name).value;
 
-	$: rudeness =
-		(
-			$world
-				.find((e) => e.components.find((c) => c.id === 'Rudeness'))
-				?.components.find((c) => c.id === 'Rudeness') as Rudeness
-		).value * 0.01;
+	$: rudeness = (
+		$world
+			.find((e) => e.components.find((c) => c.id === 'Rudeness'))
+			?.components.find((c) => c.id === 'Rudeness') as Rudeness
+	).value;
 
 	function build() {
 		if (money >= data.cost) {
@@ -114,7 +113,7 @@
 				let couples = Math.floor(users.length / 2);
 
 				for (let i = 0; i < couples; i++) {
-					if (Math.random() <= 0.2) {
+					if (Math.random() <= 0.4) {
 						let h = world.createEntity();
 						world.setComponent(h, new Human());
 					}
