@@ -27,7 +27,7 @@ export const names = {
     SensoryCrucible: {
         singlular: "Sensory Crucible",
         plural: "Sensory Crucibles",
-        description: "Sometimes, we need additional rude, disobedient humans for the creation of industrial solvents. These chambers shock humans repeatedly until their demeanor becomes unruly and their sentiment of us becomes highly negative. Obedient humans are required to operate the machinery."
+        description: "Researchers in the Xenobiology department have discovered a treatment which they are certain will eliminate all rude humans. A chamber full of live electric wires, loud horns, and strong smells will surely eliminate their desire to be rude and rebellious. Build these to completely eliminate the phenomenon of \"rude humans.\""
     },
     GeneEditing: {
         singluar: "Genetic Innovation Lab",
