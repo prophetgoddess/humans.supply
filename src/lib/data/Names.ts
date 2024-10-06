@@ -114,5 +114,24 @@ export const names = {
         plural: "Gargacoins",
         description: "The legal tender of the planet Gargelmax."
     },
-    
+    BuildingExport: {
+        single: "Biomatter Brick",
+        plural: "Biomatter Bricks",
+        description: "A pressed and kiln-fried human biomatter brick, suitable as a building material."
+    },
+    FoodExport: {
+        single: "Epicurean Export",
+        plural: "Epicurean Exports",
+        description: "Food products prepared for export, such as cooking oils, ground meat, or GFDA-approved flavorings."
+    },
+    FunExport: {
+        single: "Flatpack Clown",
+        plural: "Flatpack Clowns",
+        description: "Highly trained jester humans in flatpack frames. Short shelf-life."
+    },
+    SolventExport: {
+        single: "Barrel of Solvent",
+        plural: "Barrels of Solvent",
+        description: "A barrel of highly refined human digestive acids, suitable for use in cleaning products."
+    }
 }
