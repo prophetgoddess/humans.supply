@@ -16,7 +16,8 @@
 		Rude,
 		Event,
 		Rudeness,
-		SolitaryConfinement
+		SolitaryConfinement,
+		Description
 	} from '$lib/Components';
 	import { names } from '$lib/data/Names';
 
@@ -24,16 +25,19 @@
 	world.setComponent(reproductionChamber, new Facility(10, 50, true));
 	world.setComponent(reproductionChamber, new ReproductionChamber());
 	world.setComponent(reproductionChamber, new Name(names.ReproductionChamber.singular));
+	world.setComponent(reproductionChamber, new Description(names.ReproductionChamber.description));
 
 	let meatGrinder = world.createEntity();
 	world.setComponent(meatGrinder, new Facility(10, 100, true));
 	world.setComponent(meatGrinder, new MeatGrinder());
 	world.setComponent(meatGrinder, new Name(names.MeatGrinder.singular));
+	world.setComponent(meatGrinder, new Description(names.MeatGrinder.description));
 
 	let solitaryConfinement = world.createEntity();
 	world.setComponent(solitaryConfinement, new Facility(10, 100, true));
 	world.setComponent(solitaryConfinement, new SolitaryConfinement());
 	world.setComponent(solitaryConfinement, new Name(names.SolitaryConfinement.singular));
+	world.setComponent(solitaryConfinement, new Description(names.SolitaryConfinement.description));
 
 	let singleton = world.createEntity();
 	world.setComponent(singleton, new Money(300));

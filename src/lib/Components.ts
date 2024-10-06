@@ -41,6 +41,14 @@ export class Name extends Component {
     }
 }
 
+export class Description extends Component {
+    value: string;
+    constructor(value: string) {
+        super("Description");
+        this.value = value;
+    }
+}
+
 // HUMAN COMPONENTS
 
 export class Human extends Component {

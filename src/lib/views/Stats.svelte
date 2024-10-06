@@ -66,15 +66,17 @@
 	});
 </script>
 
-<div class="panel">
+<div style="border: solid; padding: 4px; margin: 2px">
 	<h2>Stats</h2>
-	Total Humans: {population}
-	| Unused Humans: {freeHumans}
-	{#if obedientHumans > 0}
-		| Obedient Humans: {obedientHumans}
-	{/if}
-	{#if rudeHumans > 0}
-		| Rude Humans: {rudeHumans}
-	{/if}
-	| Money: {money}
+	<p>
+		Total Humans: {population}
+		| Unused Humans: {freeHumans}
+		{#if obedientHumans > 0}
+			| Obedient Humans: {obedientHumans}
+		{/if}
+		{#if rudeHumans > 0}
+			| Rude Humans: {rudeHumans}
+		{/if}
+		| Money: {money}
+	</p>
 </div>

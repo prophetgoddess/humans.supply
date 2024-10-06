@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		Description,
 		Human,
 		Money,
 		Name,
@@ -35,6 +36,8 @@
 	$: data = entity.components.find((c) => c.id === 'Facility') as Facility;
 
 	$: name = (entity.components.find((c) => c.id === 'Name') as Name).value;
+
+	$: description = (entity.components.find((c) => c.id === 'Description') as Description).value;
 
 	$: rudeness = (
 		$world
@@ -181,10 +184,10 @@
 	});
 </script>
 
-<div class="panel">
-	<span>{name}</span>
+<div style="border: solid; padding: 4px; margin: 2px">
+	<p><b>{name}</b></p>
 	{#if data.purchased}
-		<span>
+		<p>
 			Capacity:
 			{#if currentCapacity > 0}
 				<button on:click={decreaseCapacity}>-</button>
@@ -194,9 +197,11 @@
 				<button on:click={increaseCapacity}>+</button>
 			{/if}
 			Processing: {users.length}
-		</span>
+		</p>
 	{:else}
-		${data.cost}
-		<button on:click={build}>Build</button>
+		<p></p>
+		<p>${data.cost}</p>
+		<p><button on:click={build}>Build</button></p>
+		<p>{description}</p>
 	{/if}
 </div>

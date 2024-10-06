@@ -36,14 +36,14 @@
 </script>
 
 <div class="panel">
-	<div class="panel" style="grid-column: 1/2">
+	<div class="panel" style="flex-direction: column; width: 50%;">
 		<h3>Available Facilities</h3>
 		{#each available as building (building.id)}
 			<Building entity={building} />
 		{/each}
 	</div>
 
-	<div class="panel" style="grid-column: 2/2">
+	<div class="panel" style="flex-direction: column; width: 50%;">
 		{#each built as building (building.id)}
 			<Building entity={building} />
 		{/each}
