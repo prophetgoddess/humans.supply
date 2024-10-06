@@ -77,40 +77,30 @@ export class Obedient extends Component {
 
 // FACILITY COMPONENTS
 
+export enum FacilityType {
+    ReproductionChamber,
+    MeatGrinder,
+    SolitaryConfinement,
+}
+
 export class Facility extends Component {
     capacity: number;
     cost: number;
     purchased: boolean;
     unlocked: boolean;
+    type: FacilityType;
 
     constructor(
+        type: FacilityType,
         capacity: number,
         cost: number,
         unlocked: boolean = false,
         purchased: boolean = false,) {
         super("Facility");
-
+        this.type = type;
         this.capacity = capacity;
         this.cost = cost;
         this.unlocked = unlocked;
         this.purchased = purchased;
-    }
-}
-
-export class ReproductionChamber extends Component {
-    constructor() {
-        super(names.ReproductionChamber.singular);
-    }
-}
-
-export class MeatGrinder extends Component {
-    constructor() {
-        super(names.MeatGrinder.singular);
-    }
-}
-
-export class SolitaryConfinement extends Component {
-    constructor() {
-        super(names.SolitaryConfinement.singular);
     }
 }

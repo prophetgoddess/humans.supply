@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		Description,
+		FacilityType,
 		Human,
 		Money,
 		Name,
@@ -10,7 +11,6 @@
 		Working,
 		type Facility
 	} from '$lib/Components';
-	import { names } from '$lib/data/Names';
 	import { Entity, world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
 
@@ -21,16 +21,6 @@
 	let users: Entity[] = [];
 	let currentCapacity: number = 0;
 
-	$: money = $world.reduce((total, e) => {
-		let component = e.components.find((c) => c.id == 'Money');
-
-		if (component !== undefined) {
-			return (component as Money).value;
-		}
-
-		return total;
-	}, 0);
-
 	$: humans = $world.filter((e) => e.components.find((c) => c.id === 'Human') !== undefined);
 
 	$: data = entity.components.find((c) => c.id === 'Facility') as Facility;
@@ -39,6 +29,20 @@
 
 	$: description = (entity.components.find((c) => c.id === 'Description') as Description).value;
 
+	$: cost =
+		data.cost *
+		$world.filter((e) => {
+			let facility = e.components.find((c) => c.id === 'Facility') as Facility;
+
+			if (facility !== undefined) {
+				if (facility.type == data.type) {
+					return true;
+				}
+			}
+
+			return false;
+		}).length;
+
 	$: rudeness = (
 		$world
 			.find((e) => e.components.find((c) => c.id === 'Rudeness'))
@@ -46,7 +50,7 @@
 	).value;
 
 	function build() {
-		if (changeMoney(-data.cost)) {
+		if (changeMoney(-cost)) {
 			let newBuilding = world.copyEntity(entity);
 			let newData = Object.create(data);
 			newData.purchased = true;
@@ -65,7 +69,7 @@
 				h.components.find((c) => c.id === 'Rude') === undefined &&
 				!(
 					h.components.find((c) => c.id === 'Obedient') &&
-					entity.components.find((c) => c.id === 'SolitaryConfinement')
+					data.type === FacilityType.SolitaryConfinement
 				)
 		);
 		if (human !== undefined) {
@@ -136,45 +140,40 @@
 				assignHuman();
 			}
 
-			if (
-				entity.components.find((c) => c.id === names.ReproductionChamber.singular) !== undefined
-			) {
-				for (let user of users) {
-					if (Math.random() < rudeness) {
-						makeRude(user);
-					}
-				}
-
+			if (data.type === FacilityType.ReproductionChamber) {
 				let couples = Math.floor(users.length / 2);
 
 				for (let i = 0; i < couples; i++) {
-					if (Math.random() <= 0.4) {
+					if (Math.random() < 0.5) {
 						if (changeMoney(-1)) {
 							let h = world.createEntity();
 							world.setComponent(h, new Human());
 						}
 					}
 				}
-			} else if (entity.components.find((c) => c.id === names.MeatGrinder.singular) !== undefined) {
 				for (let user of users) {
 					if (Math.random() < rudeness) {
 						makeRude(user);
-					} else if (Math.random() < 0.5) {
+					}
+				}
+			} else if (data.type === FacilityType.MeatGrinder) {
+				for (let user of users) {
+					if (Math.random() < 0.6) {
 						freeHuman(user);
 						world.destroyEntity(user);
 						changeMoney(10);
+					} else if (Math.random() < rudeness) {
+						makeRude(user);
 					}
 				}
-			} else if (
-				entity.components.find((c) => c.id === names.SolitaryConfinement.singular) !== undefined
-			) {
+			} else if (data.type === FacilityType.SolitaryConfinement) {
 				for (let user of users) {
-					if (Math.random() < rudeness) {
-						makeRude(user);
-					} else if (Math.random() < 0.5) {
+					if (Math.random() < 0.45) {
 						if (changeMoney(-2)) {
 							makeObedient(user);
 						}
+					} else if (Math.random() < rudeness) {
+						makeRude(user);
 					}
 				}
 			}
@@ -198,7 +197,7 @@
 		</p>
 	{:else}
 		<p></p>
-		<p>${data.cost}</p>
+		<p>${cost}</p>
 		<p><button on:click={build}>Build</button></p>
 		<p>{description}</p>
 	{/if}

@@ -9,38 +9,39 @@
 	import {
 		Facility,
 		Human,
-		MeatGrinder,
 		Money,
 		Name,
-		ReproductionChamber,
 		Rude,
 		Event,
+		FacilityType,
 		Rudeness,
-		SolitaryConfinement,
 		Description
 	} from '$lib/Components';
 	import { names } from '$lib/data/Names';
 
 	let reproductionChamber = world.createEntity();
-	world.setComponent(reproductionChamber, new Facility(10, 50, true));
-	world.setComponent(reproductionChamber, new ReproductionChamber());
+	world.setComponent(
+		reproductionChamber,
+		new Facility(FacilityType.ReproductionChamber, 10, 50, true)
+	);
 	world.setComponent(reproductionChamber, new Name(names.ReproductionChamber.singular));
 	world.setComponent(reproductionChamber, new Description(names.ReproductionChamber.description));
 
 	let meatGrinder = world.createEntity();
-	world.setComponent(meatGrinder, new Facility(10, 100, true));
-	world.setComponent(meatGrinder, new MeatGrinder());
+	world.setComponent(meatGrinder, new Facility(FacilityType.MeatGrinder, 10, 100, true));
 	world.setComponent(meatGrinder, new Name(names.MeatGrinder.singular));
 	world.setComponent(meatGrinder, new Description(names.MeatGrinder.description));
 
 	let solitaryConfinement = world.createEntity();
-	world.setComponent(solitaryConfinement, new Facility(10, 100, true));
-	world.setComponent(solitaryConfinement, new SolitaryConfinement());
+	world.setComponent(
+		solitaryConfinement,
+		new Facility(FacilityType.SolitaryConfinement, 10, 100, true)
+	);
 	world.setComponent(solitaryConfinement, new Name(names.SolitaryConfinement.singular));
 	world.setComponent(solitaryConfinement, new Description(names.SolitaryConfinement.description));
 
 	let singleton = world.createEntity();
-	world.setComponent(singleton, new Money(300));
+	world.setComponent(singleton, new Money(1000));
 	world.setComponent(singleton, new Rudeness(0.01));
 
 	let h = world.createEntity();
@@ -74,7 +75,7 @@
 			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
 			let newRudeness = easeOutCirc(rudeHumans / 5000.0);
 			if (rudeness != undefined) {
-				world.setComponent(singleton, new Rudeness(newRudeness));
+				world.setComponent(singleton, new Rudeness(newRudeness * 0.7));
 			}
 		}
 	});

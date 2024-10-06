@@ -78,7 +78,6 @@
 				createMessage(events.human_repro[populationEventIndex]);
 				populationEventIndex++;
 				populationThreshold += 10 * populationEventIndex;
-				console.log('pop threshold: ' + populationThreshold);
 			}
 		}
 
@@ -87,7 +86,6 @@
 				createMessage(events.rude_human[rudeEventIndex]);
 				rudeEventIndex++;
 				rudeThreshold += 10 * rudeEventIndex;
-				console.log('rude threshold: ' + rudeThreshold);
 			}
 		}
 	});
