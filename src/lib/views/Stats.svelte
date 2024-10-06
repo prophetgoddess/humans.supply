@@ -58,10 +58,27 @@
 		world.setComponent(msg, new Event(message, 10));
 	}
 
+	let populationThreshold = 2;
+	let populationEventIndex = 0;
+
+	let rudeThreshold = 1;
+	let rudeEventIndex = 0;
+
 	tick.subscribe((value) => {
-		if (population > 2 && !events.human_repro_1.triggered) {
-			events.human_repro_1.triggered = true;
-			createMessage(events.human_repro_1.text);
+		if (populationEventIndex < events.human_repro.length) {
+			if (population > populationThreshold) {
+				populationEventIndex++;
+				populationThreshold *= 1.15;
+				createMessage(events.human_repro[populationEventIndex].text);
+			}
+		}
+
+		if (rudeEventIndex < events.rude_human.length) {
+			if (rudeHumans > rudeThreshold && !events.rude_human[rudeEventIndex].text) {
+				rudeEventIndex++;
+				rudeThreshold *= 1.15;
+				createMessage(events.rude_human[rudeEventIndex].text);
+			}
 		}
 	});
 </script>
