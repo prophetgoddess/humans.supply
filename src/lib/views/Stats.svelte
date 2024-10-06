@@ -60,24 +60,34 @@
 	let populationThreshold = 2;
 	let populationEventIndex = 0;
 
-	let rudeThreshold = 1;
+	let rudeThreshold = 0;
 	let rudeEventIndex = 0;
+
+	function ease(x: number) {
+		return Math.sin((x * Math.PI) / 2);
+	}
+
+	function debugWorld() {
+		console.log($world);
+	}
 
 	tick.subscribe((value) => {
 		if (populationEventIndex < events.human_repro.length) {
 			if (population > populationThreshold) {
-				populationThreshold *= 1.15;
 				console.log(populationEventIndex);
 				createMessage(events.human_repro[populationEventIndex]);
 				populationEventIndex++;
+				populationThreshold += 10 * populationEventIndex;
+				console.log('pop threshold: ' + populationThreshold);
 			}
 		}
 
 		if (rudeEventIndex < events.rude_human.length) {
-			if (rudeHumans > rudeThreshold && !events.rude_human[rudeEventIndex]) {
-				rudeThreshold *= 1.15;
+			if (rudeHumans > rudeThreshold) {
 				createMessage(events.rude_human[rudeEventIndex]);
 				rudeEventIndex++;
+				rudeThreshold += 10 * rudeEventIndex;
+				console.log('rude threshold: ' + rudeThreshold);
 			}
 		}
 	});
@@ -95,5 +105,6 @@
 			| Rude Humans: {rudeHumans}
 		{/if}
 		| Money: {money}
+		<button on:click={debugWorld}>debug</button>
 	</p>
 </div>

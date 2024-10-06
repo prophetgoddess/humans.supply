@@ -52,8 +52,6 @@ export class Description extends Component {
 // HUMAN COMPONENTS
 
 export class Human extends Component {
-    mood: number = 0.0;
-
     constructor() {
         super("Human");
     }

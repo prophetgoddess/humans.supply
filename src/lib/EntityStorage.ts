@@ -52,9 +52,7 @@ export const world = {
         return newEntity;
     },
     destroyEntity: (e: Entity) => {
-        update((ls) => {
-            return ls.filter((o) => o.id !== e.id)
-        })
+        update((ls) => ls.filter((o) => o.id !== e.id))
     },
     setComponent: (e: Entity, component: Component) => {
         update((ls) => {

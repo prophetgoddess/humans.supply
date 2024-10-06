@@ -73,7 +73,6 @@
 		if (singleton != undefined) {
 			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
 			let newRudeness = easeOutCirc(rudeHumans / 5000.0);
-			console.log(newRudeness);
 			if (rudeness != undefined) {
 				world.setComponent(singleton, new Rudeness(newRudeness));
 			}

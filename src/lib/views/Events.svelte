@@ -27,6 +27,6 @@
 
 <div>
 	{#each events as event, i}
-		<Event --bottom="{i * 100}px" entity={event} />
+		<Event --bottom="{(i + 0.25) * 100}px" entity={event} />
 	{/each}
 </div>

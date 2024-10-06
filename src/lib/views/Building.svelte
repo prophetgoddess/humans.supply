@@ -74,11 +74,9 @@
 		}
 	}
 
-	function freeHuman() {
-		let human = users.pop();
-		users = users;
-
+	function freeHuman(human: Entity) {
 		if (human !== undefined) {
+			users = users.filter((e) => e.id !== human.id);
 			world.removeComponent(human, 'Working');
 		}
 	}
@@ -100,7 +98,7 @@
 			}
 
 			users = users.filter((e) => e.id !== human.id);
-			world.removeComponent(human, 'Working');
+			freeHuman(human);
 			world.setComponent(human, new Rude());
 		}
 	}
@@ -112,7 +110,7 @@
 			}
 
 			users = users.filter((e) => e.id !== human.id);
-			world.removeComponent(human, 'Working');
+			freeHuman(human);
 			world.setComponent(human, new Obedient());
 		}
 	}
@@ -162,7 +160,7 @@
 					if (Math.random() < rudeness) {
 						makeRude(user);
 					} else if (Math.random() < 0.5) {
-						users = users.filter((e) => e.id == user.id);
+						freeHuman(user);
 						world.destroyEntity(user);
 						changeMoney(10);
 					}
