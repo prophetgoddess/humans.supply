@@ -42,17 +42,11 @@
 	).value;
 
 	function build() {
-		if (money >= data.cost) {
+		if (changeMoney(-data.cost)) {
 			let newBuilding = world.copyEntity(entity);
 			let newData = Object.create(data);
 			newData.purchased = true;
 			world.setComponent(newBuilding, newData);
-			let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
-			if (moneyEntity !== undefined) {
-				let moneyComponent = moneyEntity?.components.find((c) => c.id === 'Money') as Money;
-				moneyComponent.value -= data.cost;
-				world.setComponent(moneyEntity, moneyComponent);
-			}
 		}
 	}
 
@@ -109,6 +103,21 @@
 		}
 	}
 
+	function changeMoney(amount: number) {
+		let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
+		if (moneyEntity !== undefined) {
+			let moneyComponent = moneyEntity?.components.find((c) => c.id === 'Money') as Money;
+			moneyComponent.value += amount;
+			if (moneyComponent.value < 0) {
+				return false;
+			} else {
+				world.setComponent(moneyEntity, moneyComponent);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	tick.subscribe((value) => {
 		if (data !== undefined && data.purchased) {
 			if (
@@ -124,8 +133,10 @@
 
 				for (let i = 0; i < couples; i++) {
 					if (Math.random() <= 0.4) {
-						let h = world.createEntity();
-						world.setComponent(h, new Human());
+						if (changeMoney(-1)) {
+							let h = world.createEntity();
+							world.setComponent(h, new Human());
+						}
 					}
 				}
 			} else if (entity.components.find((c) => c.id === names.MeatGrinder.singular) !== undefined) {
@@ -133,14 +144,9 @@
 					if (Math.random() < rudeness) {
 						makeRude(user);
 					} else if (Math.random() < 0.5) {
+						users = users.filter((e) => e.id !== user.id);
 						world.destroyEntity(user);
-
-						let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
-						if (moneyEntity !== undefined) {
-							let moneyComponent = moneyEntity?.components.find((c) => c.id === 'Money') as Money;
-							moneyComponent.value += 10;
-							world.setComponent(moneyEntity, moneyComponent);
-						}
+						changeMoney(10);
 					}
 				}
 			} else if (
@@ -150,7 +156,9 @@
 					if (Math.random() < rudeness) {
 						makeRude(user);
 					} else if (Math.random() < 0.2) {
-						makeObedient(user);
+						if (changeMoney(-2)) {
+							makeObedient(user);
+						}
 					}
 				}
 			}

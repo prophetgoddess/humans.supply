@@ -26,18 +26,18 @@
 	world.setComponent(reproductionChamber, new Name(names.ReproductionChamber.singular));
 
 	let meatGrinder = world.createEntity();
-	world.setComponent(meatGrinder, new Facility(10, 50, true));
+	world.setComponent(meatGrinder, new Facility(10, 100, true));
 	world.setComponent(meatGrinder, new MeatGrinder());
 	world.setComponent(meatGrinder, new Name(names.MeatGrinder.singular));
 
 	let solitaryConfinement = world.createEntity();
-	world.setComponent(solitaryConfinement, new Facility(10, 50, true));
+	world.setComponent(solitaryConfinement, new Facility(10, 100, true));
 	world.setComponent(solitaryConfinement, new SolitaryConfinement());
 	world.setComponent(solitaryConfinement, new Name(names.SolitaryConfinement.singular));
 
 	let singleton = world.createEntity();
-	world.setComponent(singleton, new Money(200));
-	world.setComponent(singleton, new Rudeness(0.05));
+	world.setComponent(singleton, new Money(500));
+	world.setComponent(singleton, new Rudeness(0.01));
 
 	let h = world.createEntity();
 	world.setComponent(h, new Human());
@@ -68,7 +68,7 @@
 
 		if (singleton != undefined) {
 			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
-			let newRudeness = easeOutCirc(rudeHumans / 1000.0);
+			let newRudeness = easeOutCirc(rudeHumans / 5000.0);
 			console.log(newRudeness);
 			if (rudeness != undefined) {
 				world.setComponent(singleton, new Rudeness(newRudeness));
