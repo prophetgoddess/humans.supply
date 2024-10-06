@@ -1,10 +1,21 @@
 <script lang="ts">
-	import { Human, Name, Obedient, Rude, Working, type Facility, type Money } from '$lib/Components';
+	import {
+		Human,
+		Name,
+		Obedient,
+		Rude,
+		Rudeness,
+		Working,
+		type Facility,
+		type Money
+	} from '$lib/Components';
 	import { names } from '$lib/data/Names';
 	import { Entity, world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
 
 	export let entity: Entity;
+
+	const rudeConstant: number = 0.01;
 
 	let users: Entity[] = [];
 
@@ -23,6 +34,13 @@
 	$: data = entity.components.find((c) => c.id === 'Facility') as Facility;
 
 	$: name = (entity.components.find((c) => c.id === 'Name') as Name).value;
+
+	$: rudeness =
+		(
+			$world
+				.find((e) => e.components.find((c) => c.id === 'Rudeness'))
+				?.components.find((c) => c.id === 'Rudeness') as Rudeness
+		).value * 0.01;
 
 	function build() {
 		if (money >= data.cost) {
@@ -87,7 +105,7 @@
 			) {
 				for (let user of users) {
 					if (user.components.find((c) => c.id !== 'Obedient')) {
-						if (Math.random() < 0.01) {
+						if (Math.random() < rudeness) {
 							makeRude(user);
 						}
 					}
@@ -113,6 +131,8 @@
 							moneyComponent.value += 10;
 							world.setComponent(moneyEntity, moneyComponent);
 						}
+					} else if (Math.random() < rudeness) {
+						makeRude(user);
 					}
 				}
 			} else if (
@@ -122,7 +142,7 @@
 					if (Math.random() < 0.2) {
 						users = users.filter((e) => e.id == user.id);
 						makeObedient(user);
-					} else if (Math.random() < 0.01) {
+					} else if (Math.random() < rudeness) {
 						makeRude(user);
 					}
 				}

@@ -12,6 +12,16 @@ export class Money extends Component {
     }
 }
 
+export class Rudeness extends Component {
+    value: number;
+    constructor(value: number) {
+        super("Rudeness")
+        {
+            this.value = value;
+        }
+    }
+}
+
 export class Name extends Component {
     value: string;
     constructor(value: string) {
