@@ -36,7 +36,7 @@
 	world.setComponent(solitaryConfinement, new Name(names.SolitaryConfinement.singular));
 
 	let singleton = world.createEntity();
-	world.setComponent(singleton, new Money(500));
+	world.setComponent(singleton, new Money(300));
 	world.setComponent(singleton, new Rudeness(0.01));
 
 	let h = world.createEntity();

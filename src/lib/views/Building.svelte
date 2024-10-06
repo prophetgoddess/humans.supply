@@ -1,13 +1,13 @@
 <script lang="ts">
 	import {
 		Human,
+		Money,
 		Name,
 		Obedient,
 		Rude,
 		Rudeness,
 		Working,
-		type Facility,
-		type Money
+		type Facility
 	} from '$lib/Components';
 	import { names } from '$lib/data/Names';
 	import { Entity, world } from '$lib/EntityStorage';
@@ -107,11 +107,11 @@
 		let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
 		if (moneyEntity !== undefined) {
 			let moneyComponent = moneyEntity?.components.find((c) => c.id === 'Money') as Money;
-			moneyComponent.value += amount;
-			if (moneyComponent.value < 0) {
+			let newValue = moneyComponent.value + amount;
+			if (newValue < 0) {
 				return false;
 			} else {
-				world.setComponent(moneyEntity, moneyComponent);
+				world.setComponent(moneyEntity, new Money(newValue));
 				return true;
 			}
 		}
@@ -144,7 +144,7 @@
 					if (Math.random() < rudeness) {
 						makeRude(user);
 					} else if (Math.random() < 0.5) {
-						users = users.filter((e) => e.id !== user.id);
+						users = users.filter((e) => e.id == user.id);
 						world.destroyEntity(user);
 						changeMoney(10);
 					}
