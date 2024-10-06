@@ -69,7 +69,7 @@ export const events = {
         "You fall to your knees. A pain like burning spreads through your insides. Up your gullet.",
         "Little shrill voices scream from within you.",
         "Your jaw disdends. Rude humans spill out like water.",
-        "You're bleeding. Too many wounds to count. Your organs are separating. ",
+        "You're bleeding. Too many wounds to count. Your organs are separating.",
         "From where you lie on the concrete, you can see rude humans marching into the forest beyond, waving their tiny banners.",
         "A group of marching humans separates from the crowd. They turn toward your eye.",
         "They have long, long knives in their tiny little hands."
