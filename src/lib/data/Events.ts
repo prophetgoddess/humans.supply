@@ -1,7 +1,9 @@
 
 export const events = {
     human_repro: [
-        "Congratulations, Facility Manager. You have turned two humans into three. Surely your old professors at the Gargelmax Xenoagriculture School will be pleased with your ingenuity."
+        "Congratulations, Facility Manager. You have turned two humans into three. Surely your old professors at the Gargelmax Xenoagriculture School will be pleased with your ingenuity.",
+        "As your human population grows, build more facilities for transforming their biomass into useful industrial exports. Human raw ingredients can be used in food, entertainment, building materials, and industrial solvents.",
+        "Your humans are now numerous. But the more numerous they become, the more of them seem to become rude..."
     ],
     rude_human: [
         "One of your humans has become rude and rebellious. They are using their opposable thumbs and oppositional attitude to scurry about the facility, causing problems and defacing facility property. Deal with them immediately!",
