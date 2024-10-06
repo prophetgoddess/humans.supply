@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Build from '$lib/views/Build.svelte';
 	import Stats from '$lib/views/Stats.svelte';
+	import Events from '$lib/views/Events.svelte';
 
 	import { tick } from '$lib/Time';
 
@@ -13,6 +14,7 @@
 		Name,
 		ReproductionChamber,
 		Rude,
+		Event,
 		Rudeness,
 		SolitaryConfinement
 	} from '$lib/Components';
@@ -73,3 +75,5 @@
 <Stats />
 
 <Build />
+
+<Events />

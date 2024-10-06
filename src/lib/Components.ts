@@ -12,6 +12,17 @@ export class Money extends Component {
     }
 }
 
+export class Event extends Component {
+    message: string;
+    ticks: number;
+
+    constructor(message: string, ticks: number = 20) {
+        super("Event");
+        this.message = message;
+        this.ticks = ticks;
+    }
+}
+
 export class Rudeness extends Component {
     value: number;
     constructor(value: number) {
