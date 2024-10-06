@@ -66,18 +66,18 @@
 	tick.subscribe((value) => {
 		if (populationEventIndex < events.human_repro.length) {
 			if (population > populationThreshold) {
-				populationEventIndex++;
 				populationThreshold *= 1.15;
-				console.log(events.human_repro[populationEventIndex]);
+				console.log(populationEventIndex);
 				createMessage(events.human_repro[populationEventIndex]);
+				populationEventIndex++;
 			}
 		}
 
 		if (rudeEventIndex < events.rude_human.length) {
 			if (rudeHumans > rudeThreshold && !events.rude_human[rudeEventIndex]) {
-				rudeEventIndex++;
 				rudeThreshold *= 1.15;
 				createMessage(events.rude_human[rudeEventIndex]);
+				rudeEventIndex++;
 			}
 		}
 	});
