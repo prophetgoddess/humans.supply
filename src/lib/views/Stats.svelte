@@ -51,7 +51,6 @@
 
 		return total;
 	}, 0);
-	//$: averageMood = humans.reduce((total: number, { mood }) => total + mood, 0) / population;
 
 	function createMessage(message: string) {
 		let msg = world.createEntity();
@@ -69,15 +68,16 @@
 			if (population > populationThreshold) {
 				populationEventIndex++;
 				populationThreshold *= 1.15;
-				createMessage(events.human_repro[populationEventIndex].text);
+				console.log(events.human_repro[populationEventIndex]);
+				createMessage(events.human_repro[populationEventIndex]);
 			}
 		}
 
 		if (rudeEventIndex < events.rude_human.length) {
-			if (rudeHumans > rudeThreshold && !events.rude_human[rudeEventIndex].text) {
+			if (rudeHumans > rudeThreshold && !events.rude_human[rudeEventIndex]) {
 				rudeEventIndex++;
 				rudeThreshold *= 1.15;
-				createMessage(events.rude_human[rudeEventIndex].text);
+				createMessage(events.rude_human[rudeEventIndex]);
 			}
 		}
 	});
