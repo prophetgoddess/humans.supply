@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type { Money } from '$lib/Components';
+	import { Money, Event } from '$lib/Components';
 	import { world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
+	import { events } from '$lib/data/Events';
 
 	$: population = $world.reduce((total, e) => {
 		if (e.components.find((c) => c.id === 'Human') !== undefined) {
@@ -51,8 +52,15 @@
 	}, 0);
 	//$: averageMood = humans.reduce((total: number, { mood }) => total + mood, 0) / population;
 
+	function createMessage(message: string) {
+		let msg = world.createEntity();
+		world.setComponent(msg, new Event(message, 10));
+	}
+
 	tick.subscribe((value) => {
-		if (population > 2) {
+		if (population > 2 && !events.human_repro_1.triggered) {
+			events.human_repro_1.triggered = true;
+			createMessage(events.human_repro_1.text);
 		}
 	});
 </script>
@@ -67,5 +75,5 @@
 	{#if rudeHumans > 0}
 		| Rude Humans: {rudeHumans}
 	{/if}
-	| Average Mood: 0 | Money: {money}
+	| Money: {money}
 </div>
