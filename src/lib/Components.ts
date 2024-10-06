@@ -23,6 +23,15 @@ export class Event extends Component {
     }
 }
 
+export class Upgrade extends Component {
+    value: number;
+
+    constructor(value: number) {
+        super("Upgrade");
+        this.value = value;
+    }
+}
+
 export class Rudeness extends Component {
     value: number;
     constructor(value: number) {

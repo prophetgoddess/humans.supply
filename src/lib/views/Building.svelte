@@ -8,6 +8,7 @@
 		Obedient,
 		Rude,
 		Rudeness,
+		Upgrade,
 		Working,
 		type Facility
 	} from '$lib/Components';
@@ -15,8 +16,6 @@
 	import { tick } from '$lib/Time';
 
 	export let entity: Entity;
-
-	const rudeConstant: number = 0.01;
 
 	let users: Entity[] = [];
 	let currentCapacity: number = 0;
@@ -28,6 +27,14 @@
 	$: name = (entity.components.find((c) => c.id === 'Name') as Name).value;
 
 	$: description = (entity.components.find((c) => c.id === 'Description') as Description).value;
+
+	$: capacity =
+		data.capacity *
+		(
+			$world
+				.find((e) => e.components.find((c) => c.id === 'Upgrade'))
+				?.components.find((c) => c.id === 'Upgrade') as Upgrade
+		).value;
 
 	$: cost =
 		data.cost *
@@ -59,7 +66,7 @@
 	}
 
 	function assignHuman() {
-		if (data.capacity <= users.length || currentCapacity <= users.length) {
+		if (capacity <= users.length || currentCapacity <= users.length) {
 			return;
 		}
 
@@ -87,12 +94,20 @@
 
 	function increaseCapacity() {
 		currentCapacity++;
-		if (currentCapacity > data.capacity) currentCapacity = data.capacity;
+		if (currentCapacity > capacity) currentCapacity = capacity;
 	}
 
 	function decreaseCapacity() {
 		currentCapacity--;
 		if (currentCapacity < 0) currentCapacity = 0;
+	}
+
+	function maxCapacity() {
+		currentCapacity = capacity;
+	}
+
+	function zeroCapacity() {
+		currentCapacity = 0;
 	}
 
 	function makeRude(human: Entity) {
@@ -187,11 +202,13 @@
 		<p>
 			Capacity:
 			{#if currentCapacity > 0}
+				<button on:click={zeroCapacity}>0</button>
 				<button on:click={decreaseCapacity}>-</button>
 			{/if}
 			{currentCapacity}
-			{#if currentCapacity < data.capacity}
+			{#if currentCapacity < capacity}
 				<button on:click={increaseCapacity}>+</button>
+				<button on:click={maxCapacity}>MAX</button>
 			{/if}
 			Processing: {users.length}
 		</p>

@@ -15,7 +15,8 @@
 		Event,
 		FacilityType,
 		Rudeness,
-		Description
+		Description,
+		Upgrade
 	} from '$lib/Components';
 	import { names } from '$lib/data/Names';
 
@@ -41,8 +42,9 @@
 	world.setComponent(solitaryConfinement, new Description(names.SolitaryConfinement.description));
 
 	let singleton = world.createEntity();
-	world.setComponent(singleton, new Money(1000));
+	world.setComponent(singleton, new Money(10000));
 	world.setComponent(singleton, new Rudeness(0.01));
+	world.setComponent(singleton, new Upgrade(1));
 
 	let h = world.createEntity();
 	world.setComponent(h, new Human());
