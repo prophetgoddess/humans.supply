@@ -35,6 +35,11 @@ export const names = {
     },
     rude_human_10: {
         text: "Your doctor says that you need to take time off to recover from \"burnout.\" You are too worried to take time off because you are afraid that the humans will ruin everything while you are gone."
+    },
+    rude_human_11: {
+        text: "Humans have claimed their first Gargelmaxian victim. They climbed into one of your staffers' airways and cut them up from the inside. It's too gruesome to think about!"
+    },
+    rude_human_12 {
+        text: "Gargelmaxians entering the facility now wear impermeable airway masks, to prevent small humans from climbing inside them and butchering them from the inside out."
     }
-    
 }
