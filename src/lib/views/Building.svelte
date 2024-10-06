@@ -93,6 +93,7 @@
 		users = users.filter((e) => e.id !== human.id);
 
 		if (human !== undefined) {
+			world.removeComponent(human, 'Working');
 			world.setComponent(human, new Obedient());
 		}
 	}
