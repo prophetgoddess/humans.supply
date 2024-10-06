@@ -28,7 +28,7 @@ export const names = {
         text: "The rude humans are painting tiny pictures of you - of YOU! - on the walls. Very close to the floor. You have to bend down to see them."
     },
     rude_human_8: {
-        text: "You were sleeping last night and a rude human crawled inside your ear and stabbed you with a small "knife" made out of a flake of aluminum. The facility must ban canned beverages!"
+        text: "You were sleeping last night and a rude human crawled inside your ear and stabbed you with a small \"knife\" made out of a flake of aluminum. The facility must ban canned beverages!"
     },
     rude_human_9: {
         text: "There seems to be nothing you can to do control the behavior of rude humans. They are constantly climbing your lower limbs and gouging your skin with weapons. Mostly, you no longer feel safe to enter the facility."
