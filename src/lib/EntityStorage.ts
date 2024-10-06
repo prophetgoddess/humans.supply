@@ -72,9 +72,7 @@ export const world = {
         update((ls) => {
             return ls.map((en) => {
                 if (en.id === e.id) {
-                    en.components = en.components.filter((c) => {
-                        id === c.id
-                    })
+                    en.components = en.components.filter((c) => id !== c.id)
                 }
                 return en;
             })

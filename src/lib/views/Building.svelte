@@ -82,17 +82,24 @@
 	}
 
 	function makeRude(human: Entity) {
-		users = users.filter((e) => e.id !== human.id);
-
 		if (human !== undefined) {
+			if (human.components.find((c) => c.id === 'Obedient')) {
+				return;
+			}
+
+			users = users.filter((e) => e.id !== human.id);
+			world.removeComponent(human, 'Working');
 			world.setComponent(human, new Rude());
 		}
 	}
 
 	function makeObedient(human: Entity) {
-		users = users.filter((e) => e.id !== human.id);
-
 		if (human !== undefined) {
+			if (human.components.find((c) => c.id === 'Rude')) {
+				return;
+			}
+
+			users = users.filter((e) => e.id !== human.id);
 			world.removeComponent(human, 'Working');
 			world.setComponent(human, new Obedient());
 		}
@@ -122,7 +129,6 @@
 			} else if (entity.components.find((c) => c.id === names.MeatGrinder.singular) !== undefined) {
 				for (let user of users) {
 					if (Math.random() < 0.2) {
-						users = users.filter((e) => e.id != user.id);
 						world.destroyEntity(user);
 
 						let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
@@ -140,7 +146,6 @@
 			) {
 				for (let user of users) {
 					if (Math.random() < 0.2) {
-						users = users.filter((e) => e.id != user.id);
 						makeObedient(user);
 					} else if (Math.random() < rudeness) {
 						makeRude(user);
