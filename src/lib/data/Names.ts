@@ -7,17 +7,17 @@ export const names = {
     ReproductionChamber: {
         singular: "Reproduction Chamber",
         plural: "Reproduction Chambers",
-        description: "Placing even-numbered groups of humans in this chamber generally results in some population growth. Occasionally, humans refuse to reproduce, and emerge from the chamber as rude, unmanageable oafs."
+        description: "Placing even-numbered groups of humans in this chamber generally results in some population growth. Occasionally, humans refuse to reproduce, and emerge from the chamber as rude humans, which taste terrible and are difficult to farm."
     },
     SolitaryConfinement: {
         singular: "Isolation Chamber",
         plural: "Isolation Chambers",
-        description: "This chamber prevents human socialization and limits sensory input. We find that after some time in this environment, most humans become more obedient to our commands. (Regrettably, no human process has a perfect success rate.) Obedient humans improve the performance of the facility."
+        description: "This chamber prevents human socialization and limits sensory input. We find that after some time in this environment, most humans become more obedient to our commands. (Regrettably, no human process has a perfect success rate.)"
     },
     MeatGrinder: {
         singular: "Epicurean Hall",
         plural: "Epicurean Halls",
-        description: "Gargelmaxian palates deserve a truly hearty meal. This facility produces various food ingredients approved by the GFDA: cooking oils, milled meats, calicum supplements, flavorings, and so on. The more piable the human stock, the higher quality the produce."
+        description: "Gargelmaxian palates deserve a truly hearty meal. This facility produces various food ingredients approved by the GFDA: cooking oils, milled meats, calicum supplements, flavorings, and so on."
     },
     Gymnasium: {
         singluar: "Exertion Facility",
