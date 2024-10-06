@@ -18,6 +18,7 @@
 	const rudeConstant: number = 0.01;
 
 	let users: Entity[] = [];
+	let currentCapacity: number = 0;
 
 	$: money = $world.reduce((total, e) => {
 		let component = e.components.find((c) => c.id == 'Money');
@@ -51,7 +52,7 @@
 	}
 
 	function assignHuman() {
-		if (data.capacity <= users.length) {
+		if (data.capacity <= users.length || currentCapacity <= users.length) {
 			return;
 		}
 
@@ -77,6 +78,16 @@
 		if (human !== undefined) {
 			world.removeComponent(human, 'Working');
 		}
+	}
+
+	function increaseCapacity() {
+		currentCapacity++;
+		if (currentCapacity > data.capacity) currentCapacity = data.capacity;
+	}
+
+	function decreaseCapacity() {
+		currentCapacity--;
+		if (currentCapacity < 0) currentCapacity = 0;
 	}
 
 	function makeRude(human: Entity) {
@@ -120,6 +131,10 @@
 
 	tick.subscribe((value) => {
 		if (data !== undefined && data.purchased) {
+			for (let i = 0; i < currentCapacity; i++) {
+				assignHuman();
+			}
+
 			if (
 				entity.components.find((c) => c.id === names.ReproductionChamber.singular) !== undefined
 			) {
@@ -155,7 +170,7 @@
 				for (let user of users) {
 					if (Math.random() < rudeness) {
 						makeRude(user);
-					} else if (Math.random() < 0.2) {
+					} else if (Math.random() < 0.5) {
 						if (changeMoney(-2)) {
 							makeObedient(user);
 						}
@@ -170,14 +185,15 @@
 	<span>{name}</span>
 	{#if data.purchased}
 		<span>
-			Humans:
-			<button on:click={freeHuman}>-</button>
-			{users.length}
-			{#if users.length < data.capacity}
-				<button on:click={assignHuman}>+</button>
-			{:else}
-				(MAX)
+			Capacity:
+			{#if currentCapacity > 0}
+				<button on:click={decreaseCapacity}>-</button>
 			{/if}
+			{currentCapacity}
+			{#if currentCapacity < data.capacity}
+				<button on:click={increaseCapacity}>+</button>
+			{/if}
+			Processing: {users.length}
 		</span>
 	{:else}
 		${data.cost}
