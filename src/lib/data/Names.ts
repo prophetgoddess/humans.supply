@@ -20,7 +20,7 @@ export const names = {
         description: "Gargelmaxian palates deserve a truly hearty meal. This facility produces various food ingredients approved by the GFDA: cooking oils, milled meats, calicum supplements, flavorings, and so on. The more piable the human stock, the higher quality the produce."
     },
     Gymnasium: {
-        singluar: "Exertion Facility".
+        singluar: "Exertion Facility",
         plural: "Exertion Facilities",
         description: "Observing humans, we noticed a tendency for physical exertion to take the form of oppositional, combative performance and ritual. This facility organizes humans into two teams, then exerts them against one another until they become stronger. Not all humans survive the process, and some humans become rude. Obedient humans are required to referee the match."
     },
@@ -37,7 +37,7 @@ export const names = {
     ObedienceSchool: {
         singular: "Obedience School",
         plural: "Obedience Schools",
-        description: "These schools can train obedient humans to truly love and trust the citizens of Gargelmax. Well-trained humans are highly rewarding pets, and can out-perform typical obedient humans at most tasks. Not all obedient humans pass the final exam, however."    
+        description: "These schools can train obedient humans to truly love and trust the citizens of Gargelmax. Well-trained humans are highly rewarding pets, and can out-perform typical obedient humans at most tasks. Not all obedient humans pass the final exam, however."
     },
     FeedFermenter: {
         singular: "Feed Fermenter",
