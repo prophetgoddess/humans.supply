@@ -139,7 +139,7 @@
 			) {
 				for (let user of users) {
 					if (Math.random() < 0.2) {
-						users = users.filter((e) => e.id == user.id);
+						users = users.filter((e) => e.id != user.id);
 						makeObedient(user);
 					} else if (Math.random() < rudeness) {
 						makeRude(user);
