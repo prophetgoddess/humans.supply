@@ -54,5 +54,105 @@ export const events = {
     rude_human_12: {
         text: "Gargelmaxians entering the facility now wear impermeable airway masks, to prevent small humans from climbing inside them and butchering them from the inside out.",
         triggered: false
+    },
+    rude_human_13: {
+        text: "The humans have begun slipping sharp objects inside the shoes of any Gargelmaxian who enters the facility. Full body hazmat attire may be necesarry.",
+        triggered: false
+    },
+    rude_human_14: {
+        text: "One of your staff slipped and fell on the factory floor today. The humans had greased the walkway with a very thin layer of industrial lubricant. As he lay there, they stabbed him in the eye!",
+        triggered: false
+    },
+    rude_human_15: {
+        text: "The humans have begun unscrewing the bolts of the machines. Chairs fall apart when you sit in them, too. Nobody can catch them in the act",
+        triggered: false
+    },
+    rude_human_16: {
+        text: "You have begun to dream about humans hollowing out your internal organs and living inside you. Making saunas out of your several stomachs. Feasting on your gizzard-stones.",
+        triggered: false
+    },
+    rude_human_17: {
+        text: "You find a human inside your shirt when you leave the facility. You try to squash it like a bug, but it leaps away. Something wicked glints in its hand.",
+        triggered: false
+    },
+    rude_human_18: {
+        text: "Gargelmaxian government is taking particular interest in your humans. They are investigating to see if a mass release of humans in a war zone could function as a kind of bioweapon.",
+        triggered: false
+    },
+    rude_human_19: {
+        text: "You still haven't found that human who hitchhiked into your home. You laid glue traps and caught nothing. Where did they go?!",
+        triggered: false
+    },
+    rude_human_20: {
+        text: "The floor of the facility has become unstable, pitted, and rotten. Rude humans must be hiding beneath it, destabilizing the joists!",
+        triggered: false
+    },
+    rude_human_21: {
+        text: "There are now several loose humans hiding in your house. You call an exterminator. They vaccuum everything.",
+        triggered: false
+    },
+    rude_human_22: {
+        text: "You have not been able to confirm that the humans hiding inside your house were killed. You begin to look for a new home.",
+        triggered: false
+    },
+    rude_human_23: {
+        text: "The rude humans are singing songs and chants. There are so many, they shake the facility walls. What are they saying? You do not know!",
+        triggered: false
+    },
+    rude_human_24: {
+        text: "Your home burns down in the middle of the night.",
+        triggered: false
+    },
+    rude_human_25: {
+        text: "You find a room in a hotel. You can hear pests crawling in the walls. Are they humans? You request a room change.",
+        triggered: false
+    },
+    rude_human_26: {
+        text: "You put a hat on and it explodes. It leaves a shallow but painful wound on the top of your head. The bomb squad says that tiny explosives were sewn into the lining.",
+        triggered: false
+    },
+    rude_human_27: {
+        text: "Your manager gives you a terrible performance review.",
+        triggered: false
+    },
+    rude_human_28: {
+        text: "The machinery in the facility has been running terribly. The mechanic opens a panel on the side of a battery and rude humans spill out! They stud his face and eyes with tiny poisoned bolts!",
+        triggered: false
+    },
+    rude_human_29: {
+        text: "You are placed on a performance improvement plan. Rude human numbers must fall to zero before your PIP completes.",
+        triggered: false
+    },
+    rude_human_30: {
+        text: "Rude humans are marching drills on the facility fairground. (They have built a fairground.)",
+        triggered: false
+    },
+    rude_human_31: {
+        text: "Your full-body hazmat suits all have holes in them now. Rude humans must have found their way into the locker.",
+        triggered: false
+    },
+    rude_human_32: {
+        text: "You found a worrying lump beneath your skin. You make an appointment with the doctor.",
+        triggered: false
+    },
+    rude_human_33: {
+        text: "It seems that the more rude humans you have, the ruder humans become in general.",
+        triggered: false
+    },
+    rude_human_34: {
+        text: "The doctor is unable to identify the lump beneath your skin. They schedule you for a biopsy.",
+        triggered: false
+    },
+    rude_human_35: {
+        text: "You have been dreaming about rude humans every night. In your dreams they carve you up with tiny knives.",
+        triggered: false
+    },
+    rude_human_36: {
+        text: "One of your staffers trips and falls on the factory floor. Rude humans leap out from the shadows and swarm on his face, ripping the hazmat suit. They stab him in the eye. He's in the hospital now.",
+        triggered: false
+    },
+    rude_human_37: {
+        text: "The GFDA will be auditing your factory soon. They're concerned about a rude human containment breach.",
+        triggered: false
     }
 }
