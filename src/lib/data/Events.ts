@@ -41,5 +41,28 @@ export const events = {
         "You have been dreaming about rude humans every night. In your dreams they carve you up with tiny knives.",
         "One of your staffers trips and falls on the factory floor. Rude humans leap out from the shadows and swarm on his face, ripping the hazmat suit. They stab him in the eye. He's in the hospital now.",
         "The GFDA will be auditing your factory soon. They're concerned about a rude human containment breach."
+        "The biopsy is scheudled for next week. The lump under your skin is still there.",
+        "Your staffers are quitting in droves. Too many have been injured by the blades and arrows of the rude humans.",
+        "Your PIP will be completing soon. Your boss still expects you to end the entire phenomenon of rude humans.",
+        "You go in for the biopsy. The doctor begins to slice open your lump.",
+        "It is a hard, plasticky pellet. The doctor lifts it from a pit beneath your skin.",
+        "The pellet cracks open. Rude humans spill out!",
+        "They're fighting! They're gouging your skin! They have small explosives! They have long knives!",
+        "Your surgeon flees the room, screaming! The rude humans have clogged his gills!",
+        "The rude humans are flaying your eyelids! They're carving your cheeks! You swat them, but they dodge your vast, meaty graspers!",
+        "A rude human is crawling beneath your skin, swimming up your vein!",
+        "Your surgeon falls with a thump on the operating room floor - the rude humans set off a homemade bomb in his jaw!",
+        "You stagger out of the operating room. Blind, you grasp a fire extinguisher and turn it on yourself. Rude humans fly everywhere.",
+        "You make it to your vehicle. Rude humans drop off you, frozen and suffocated.",
+        "Careening from side to side of the road, you arrive at the factory. The airlock is open. Gargelmaxians are fleeing the building. Masses of rude humans seethe on their skin.",
+        "You run through the parking lot, screaming. Flames dance on the roof of the factory farm. Rivers of miniscrule humans flow across the concrete.",
+        "Something bursts in your lower gizzard.",
+        "You fall to your knees. A pain like burning spreads through your insides. Up your gullet.",
+        "Little shrill voices scream from within you.",
+        "Your jaw disdends. Rude humans spill out like water.",
+        "You're bleeding. Too many wounds to count. Your organs are separating. ",
+        "From where you lie on the concrete, you can see rude humans marching into the forest beyond, waving their tiny banners.",
+        "A group of marching humans separates from the crowd. They turn toward your eye.",
+        "They have long, long knives in their tiny little hands."
     ]
 }
