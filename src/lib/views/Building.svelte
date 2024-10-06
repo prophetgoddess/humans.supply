@@ -121,7 +121,7 @@
 			} else if (entity.components.find((c) => c.id === names.MeatGrinder.singular) !== undefined) {
 				for (let user of users) {
 					if (Math.random() < 0.2) {
-						users = users.filter((e) => e.id == user.id);
+						users = users.filter((e) => e.id != user.id);
 						world.destroyEntity(user);
 
 						let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
