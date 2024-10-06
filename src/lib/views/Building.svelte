@@ -64,7 +64,11 @@
 		let human = humans.find(
 			(h) =>
 				h.components.find((c) => c.id === 'Working') === undefined &&
-				h.components.find((c) => c.id === 'Rude') === undefined
+				h.components.find((c) => c.id === 'Rude') === undefined &&
+				!(
+					h.components.find((c) => c.id === 'Obedient') &&
+					entity.components.find((c) => c.id === 'SolitaryConfinement')
+				)
 		);
 		if (human !== undefined) {
 			users = [...users, human];
@@ -111,10 +115,8 @@
 				entity.components.find((c) => c.id === names.ReproductionChamber.singular) !== undefined
 			) {
 				for (let user of users) {
-					if (user.components.find((c) => c.id !== 'Obedient')) {
-						if (Math.random() < rudeness) {
-							makeRude(user);
-						}
+					if (Math.random() < rudeness) {
+						makeRude(user);
 					}
 				}
 
@@ -128,7 +130,9 @@
 				}
 			} else if (entity.components.find((c) => c.id === names.MeatGrinder.singular) !== undefined) {
 				for (let user of users) {
-					if (Math.random() < 0.2) {
+					if (Math.random() < rudeness) {
+						makeRude(user);
+					} else if (Math.random() < 0.5) {
 						world.destroyEntity(user);
 
 						let moneyEntity = $world.find((e) => e.components.find((c) => c.id === 'Money'));
@@ -137,18 +141,16 @@
 							moneyComponent.value += 10;
 							world.setComponent(moneyEntity, moneyComponent);
 						}
-					} else if (Math.random() < rudeness) {
-						makeRude(user);
 					}
 				}
 			} else if (
 				entity.components.find((c) => c.id === names.SolitaryConfinement.singular) !== undefined
 			) {
 				for (let user of users) {
-					if (Math.random() < 0.2) {
-						makeObedient(user);
-					} else if (Math.random() < rudeness) {
+					if (Math.random() < rudeness) {
 						makeRude(user);
+					} else if (Math.random() < 0.2) {
+						makeObedient(user);
 					}
 				}
 			}

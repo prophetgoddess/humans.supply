@@ -14,7 +14,8 @@
 	$: freeHumans = $world.reduce((total, e) => {
 		if (
 			e.components.find((c) => c.id === 'Human') !== undefined &&
-			e.components.find((c) => c.id === 'Working') === undefined
+			e.components.find((c) => c.id === 'Working') === undefined &&
+			e.components.find((c) => c.id === 'Rude') === undefined
 		) {
 			return total + 1;
 		}

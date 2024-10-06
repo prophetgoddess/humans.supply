@@ -37,7 +37,7 @@
 
 	let singleton = world.createEntity();
 	world.setComponent(singleton, new Money(200));
-	world.setComponent(singleton, new Rudeness(0.01));
+	world.setComponent(singleton, new Rudeness(0.05));
 
 	let h = world.createEntity();
 	world.setComponent(h, new Human());
@@ -55,6 +55,10 @@
 		return total;
 	}, 0);
 
+	function easeOutCirc(x: number): number {
+		return Math.sqrt(1 - Math.pow(x - 1, 2));
+	}
+
 	tick.subscribe((value) => {
 		if (rudeHumans === undefined || rudeHumans === 0) {
 			return;
@@ -64,8 +68,9 @@
 
 		if (singleton != undefined) {
 			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
+			let newRudeness = easeOutCirc(rudeHumans / 1000.0);
+			console.log(newRudeness);
 			if (rudeness != undefined) {
-				var newRudeness = Math.log(rudeHumans * 10) * 0.01;
 				world.setComponent(singleton, new Rudeness(newRudeness));
 			}
 		}
