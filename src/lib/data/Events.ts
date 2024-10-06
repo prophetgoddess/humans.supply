@@ -5,6 +5,11 @@ export const events = {
         "As your human population grows, build more facilities for transforming their biomass into useful industrial exports. Human raw ingredients can be used in food, entertainment, building materials, and industrial solvents.",
         "Your humans are now numerous. But the more numerous they become, the more of them seem to become rude..."
     ],
+    facility_created: [
+        "You have built your first Reproduction Chamber. Humans will enter this completely sealed, windowless cube. Some will emerge with additional humans, but the process has a high fail rate.",
+        "You have built your first Isolation Chamber. Your xenobiology professors believed that humans might become better trained if kept in sensory deprivation environments. Time to test that theory!",
+        "You have built your first Epicurean Hall. This facility will process human biomatter into approved, sanitary foodstuffs. Enjoy your first taste of these high-quality ingredients!"
+    ],
     rude_human: [
         "One of your humans has become rude and rebellious. They are using their opposable thumbs and oppositional attitude to scurry about the facility, causing problems and defacing facility property. Deal with them immediately!",
         "The number of rude, rebellious humans infesting your facility has grown. Your superiors are displeased.",
@@ -47,7 +52,9 @@ export const events = {
         "Your staffers are quitting in droves. Too many have been injured by the blades and arrows of the rude humans.",
         "Your PIP will be completing soon. Your boss still expects you to end the entire phenomenon of rude humans.",
         "You go in for the biopsy. The doctor begins to slice open your lump.",
-        "It is a hard, plasticky pellet. The doctor lifts it from a pit beneath your skin.",
+        "It is a hard, plasticky pellet. The doctor lifts it from a pit beneath your skin."
+    ],
+    ending_events: [
         "The pellet cracks open. Rude humans spill out!",
         "They're fighting! They're gouging your skin! They have small explosives! They have long knives!",
         "Your surgeon flees the room, screaming! The rude humans have clogged his gills!",
@@ -66,5 +73,5 @@ export const events = {
         "From where you lie on the concrete, you can see rude humans marching into the forest beyond, waving their tiny banners.",
         "A group of marching humans separates from the crowd. They turn toward your eye.",
         "They have long, long knives in their tiny little hands."
-    ]
+    ],
 }
