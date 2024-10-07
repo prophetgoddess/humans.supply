@@ -47,7 +47,7 @@ export const events = {
         "The doctor is unable to identify the lump beneath your skin. They schedule you for a biopsy.",
         "You have been dreaming about rude humans every night. In your dreams they carve you up with tiny knives.",
         "One of your staffers trips and falls on the factory floor. Rude humans leap out from the shadows and swarm on his face, ripping the hazmat suit. They stab him in the eye. He's in the hospital now.",
-        "The GFDA will be auditing your factory soon. They're concerned about a rude human containment breach."
+        "The GFDA will be auditing your factory soon. They're concerned about a rude human containment breach.",
         "The biopsy is scheudled for next week. The lump under your skin is still there.",
         "Your staffers are quitting in droves. Too many have been injured by the blades and arrows of the rude humans.",
         "Your PIP will be completing soon. Your boss still expects you to end the entire phenomenon of rude humans.",
