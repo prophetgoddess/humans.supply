@@ -1,8 +1,26 @@
 <script lang="ts">
-	import { Money, Event, Rudeness } from '$lib/Components';
+	import { Money, Event, Rudeness, Facility, FacilityType } from '$lib/Components';
 	import { world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
 	import { events } from '$lib/data/Events';
+
+	class EventTracker {
+		threshold: number;
+		index: number = 0;
+		events: string[];
+		constructor(threshold: number, events: string[]) {
+			this.threshold = threshold;
+			this.events = events;
+		}
+
+		update(n: number) {
+			if (n > this.threshold) {
+				createMessage(this.events[this.index]);
+				this.index++;
+				this.threshold += 10 * this.index;
+			}
+		}
+	}
 
 	$: population = $world.reduce((total, e) => {
 		if (e.components.find((c) => c.id === 'Human') !== undefined) {
@@ -10,6 +28,7 @@
 		}
 		return total;
 	}, 0);
+	let populationTracker = new EventTracker(2, events.human_repro);
 
 	$: freeHumans = $world.reduce((total, e) => {
 		if (
@@ -31,6 +50,7 @@
 		}
 		return total;
 	}, 0);
+	let rudeTracker = new EventTracker(2, events.rude_human);
 
 	$: obedientHumans = $world.reduce((total, e) => {
 		if (
@@ -52,19 +72,51 @@
 		return total;
 	}, 0);
 
+	$: reproChambers =
+		$world.filter((e) => {
+			let facility = e.components.find((c) => c.id === 'Facility') as Facility;
+
+			if (facility !== undefined) {
+				if (facility.type == FacilityType.ReproductionChamber) {
+					return true;
+				}
+			}
+
+			return false;
+		}).length - 1;
+	let reproTracker = new EventTracker(0, events.repro_chamber);
+
+	$: meatGrinders =
+		$world.filter((e) => {
+			let facility = e.components.find((c) => c.id === 'Facility') as Facility;
+
+			if (facility !== undefined) {
+				if (facility.type == FacilityType.MeatGrinder) {
+					return true;
+				}
+			}
+
+			return false;
+		}).length - 1;
+	let meatTracker = new EventTracker(0, events.epicurean_hall);
+
+	$: solitaries =
+		$world.filter((e) => {
+			let facility = e.components.find((c) => c.id === 'Facility') as Facility;
+
+			if (facility !== undefined) {
+				if (facility.type == FacilityType.SolitaryConfinement) {
+					return true;
+				}
+			}
+
+			return false;
+		}).length - 1;
+	let solitaryTracker = new EventTracker(0, events.iso_chamber);
+
 	function createMessage(message: string) {
 		let msg = world.createEntity();
 		world.setComponent(msg, new Event(message));
-	}
-
-	let populationThreshold = 2;
-	let populationEventIndex = 0;
-
-	let rudeThreshold = 0;
-	let rudeEventIndex = 0;
-
-	function ease(x: number): number {
-		return x * x * x;
 	}
 
 	function debugWorld() {
@@ -74,21 +126,11 @@
 	createMessage(events.game_start[0]);
 
 	tick.subscribe((value) => {
-		if (populationEventIndex < events.human_repro.length) {
-			if (population > populationThreshold) {
-				createMessage(events.human_repro[populationEventIndex]);
-				populationEventIndex++;
-				populationThreshold += 10 * populationEventIndex;
-			}
-		}
-
-		if (rudeEventIndex < events.rude_human.length) {
-			if (rudeHumans > rudeThreshold) {
-				createMessage(events.rude_human[rudeEventIndex]);
-				rudeEventIndex++;
-				rudeThreshold += 10 * rudeEventIndex;
-			}
-		}
+		populationTracker.update(population);
+		rudeTracker.update(rudeHumans);
+		reproTracker.update(reproChambers);
+		meatTracker.update(meatGrinders);
+		solitaryTracker.update(solitaries);
 
 		let singleton = $world.find((e) => e.components.find((c) => c.id == 'Rudeness') !== undefined);
 
@@ -121,6 +163,5 @@
 			| Rude Humans: {rudeHumans}
 		{/if}
 		| Money: {money}
-		<button on:click={debugWorld}>debug</button>
 	</span>
 </div>
