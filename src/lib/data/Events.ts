@@ -14,6 +14,27 @@ export const events = {
     epicurean_hall: [
         "You have built your first Epicurean Hall. This facility will process human biomatter into approved, sanitary foodstuffs. Enjoy your first taste of these high-quality ingredients!"
     ],
+    feed_fermenter: [
+        "You have built your first Feed Fermenter. It smells absolutely terrible."
+    ],
+    sensory_crucible: [
+        "You have built your first Sensory Crucible. It has fairly large power demands, and the air around it smells like ozone. Surely, this will eliminate all rude humans!"
+    ],
+    exertion_facility: [
+        "You have built your first Exertion Facility. The humans who emerge will be bricklike and meaty--perfect for maufacturing into actual bricks."
+    ],
+    gene_lab: [
+        "You have built your first Genetic Innovation Lab. Woody humans... boneless humans... they're all possible here!"
+    ],
+    bile_harvester: [
+        "You have built your first Bile Harvester. Those rude humans' sour disposition make them perfect for manufacturing strong industrial acids!"
+    ],
+    circus_academy: [
+        "You have built your first Circus Academy. These humans have so much pent up energy... hopefully, this facility will reduce the rate at which they become rude..."
+    ],
+    bonemeal_compactor: [
+        "You have built your first Bonemeal Compactor. The scent of roasted human bones fills the air!"
+    ],
     rude_human: [
         "One of your humans has become rude and rebellious. They are using their opposable thumbs and oppositional attitude to scurry about the facility, causing problems and defacing facility property. Deal with them immediately!",
         "The number of rude, rebellious humans infesting your facility has grown. Your superiors are displeased.",
