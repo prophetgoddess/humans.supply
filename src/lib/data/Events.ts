@@ -55,10 +55,10 @@ export const events = {
         "The biopsy is scheudled for next week. The lump under your skin is still there.",
         "Your staffers are quitting in droves. Too many have been injured by the blades and arrows of the rude humans.",
         "Your PIP will be completing soon. Your boss still expects you to end the entire phenomenon of rude humans.",
-        "You go in for the biopsy. The doctor begins to slice open your lump.",
-        "It is a hard, plasticky pellet. The doctor lifts it from a pit beneath your skin."
     ],
     ending_events: [
+        "You go in for the biopsy. The doctor begins to slice open your lump.",
+        "It is a hard, plasticky pellet. The doctor lifts it from a pit beneath your skin.",
         "The pellet cracks open. Rude humans spill out!",
         "They're fighting! They're gouging your skin! They have small explosives! They have long knives!",
         "Your surgeon flees the room, screaming! The rude humans have clogged his gills!",
