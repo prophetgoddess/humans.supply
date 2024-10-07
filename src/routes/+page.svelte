@@ -76,6 +76,6 @@
 </div>
 
 <p>
-	a game by <a href="https://blood.church/">cassandra lugo</a> (programming) and
-	<a href="https://blog.lauramichet.com/">laura michet</a> (writing)
+	a game by <a href="https://blood.church/">cassandra lugo</a> and
+	<a href="https://blog.lauramichet.com/">laura michet</a>
 </p>
