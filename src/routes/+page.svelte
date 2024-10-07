@@ -57,16 +57,13 @@
 	style="
 	position: fixed;
 	top: 0;
+	border-style: solid;
 	background-color: #fff;
 "
 >
 	<Stats />
 	<Events />
 </div>
-<div
-	style="
-	padding-top: 17%;
-"
->
+<div style="padding-top: 12%;">
 	<Build />
 </div>

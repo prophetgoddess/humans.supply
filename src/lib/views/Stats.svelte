@@ -111,9 +111,8 @@
 	});
 </script>
 
-<div style="border: solid; padding: 4px; margin: 2px">
-	<h2>Stats</h2>
-	<p>
+<div style="text-align: center; border-style: solid; padding: 4px; margin: 2px;">
+	<span>
 		Total Humans: {population}
 		| Unused Humans: {freeHumans}
 		{#if obedientHumans > 0}
@@ -124,5 +123,5 @@
 		{/if}
 		| Money: {money}
 		<button on:click={debugWorld}>debug</button>
-	</p>
+	</span>
 </div>
