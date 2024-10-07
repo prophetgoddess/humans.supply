@@ -5,9 +5,13 @@ export const events = {
         "As your human population grows, build more facilities for transforming their biomass into useful industrial exports. Human raw ingredients can be used in food, entertainment, building materials, and industrial solvents.",
         "Your humans are now numerous. But the more numerous they become, the more of them seem to become rude..."
     ],
-    facility_created: [
+    repro_chamber: [
         "You have built your first Reproduction Chamber. Humans will enter this completely sealed, windowless cube. Some will emerge with additional humans, but the process has a high fail rate.",
+    ],
+    iso_chamber: [
         "You have built your first Isolation Chamber. Your xenobiology professors believed that humans might become better trained if kept in sensory deprivation environments. Time to test that theory!",
+    ],
+    epicurean_hall: [
         "You have built your first Epicurean Hall. This facility will process human biomatter into approved, sanitary foodstuffs. Enjoy your first taste of these high-quality ingredients!"
     ],
     rude_human: [
