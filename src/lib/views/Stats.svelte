@@ -71,7 +71,7 @@
 		console.log($world);
 	}
 
-	createMessage('Welcome to Humans Game!');
+	createMessage(events.game_start[0]);
 
 	tick.subscribe((value) => {
 		if (populationEventIndex < events.human_repro.length) {

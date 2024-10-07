@@ -53,6 +53,20 @@
 	world.setComponent(h2, new Human());
 </script>
 
-<Stats />
-<Events />
-<Build />
+<div
+	style="
+	position: fixed;
+	top: 0;
+	background-color: #fff;
+"
+>
+	<Stats />
+	<Events />
+</div>
+<div
+	style="
+	padding-top: 17%;
+"
+>
+	<Build />
+</div>
