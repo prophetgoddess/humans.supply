@@ -51,12 +51,19 @@
 
 	let h2 = world.createEntity();
 	world.setComponent(h2, new Human());
+
+	let topbar: HTMLElement | undefined;
+	let build: HTMLElement | undefined;
+
+	$: topbarHeight = topbar?.offsetHeight;
 </script>
 
 <div
+	bind:this={topbar}
 	style="
 	position: fixed;
 	top: 0;
+	max-height: 250px;
 	border-style: solid;
 	background-color: #fff;
 "
@@ -64,6 +71,11 @@
 	<Stats />
 	<Events />
 </div>
-<div style="padding-top: 12%;">
+<div bind:this={build} style="padding-top: 250px;">
 	<Build />
 </div>
+
+<p>
+	a game by <a href="https://blood.church/">cassandra lugo</a> (programming) and
+	<a href="https://blog.lauramichet.com/">laura michet</a> (writing)
+</p>

@@ -21,12 +21,14 @@ export class RelationData {
 }
 
 export class Entity {
+    active: boolean;
     id: string;
     components: Component[]
 
     constructor() {
         this.id = uuidv4();
         this.components = [];
+        this.active = true;
     }
 }
 

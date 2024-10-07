@@ -76,7 +76,6 @@
 	tick.subscribe((value) => {
 		if (populationEventIndex < events.human_repro.length) {
 			if (population > populationThreshold) {
-				console.log(populationEventIndex);
 				createMessage(events.human_repro[populationEventIndex]);
 				populationEventIndex++;
 				populationThreshold += 10 * populationEventIndex;

@@ -10,8 +10,6 @@
 			margin: 1em;
 			padding: 0.25em;
             max-height: 150px;
-            min-height: 20%;
-            height: 20%;
 
             overflow: auto;"
 >

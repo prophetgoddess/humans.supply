@@ -36,20 +36,19 @@
 				?.components.find((c) => c.id === 'Upgrade') as Upgrade
 		).value;
 
-	$: cost =
-		data.cost *
-		$world.filter((e) => {
-			let facility = e.components.find((c) => c.id === 'Facility') as Facility;
+	$: others = $world.filter((e) => {
+		let facility = e.components.find((c) => c.id === 'Facility') as Facility;
 
-			if (facility !== undefined) {
-				if (facility.type == data.type) {
-					return true;
-				}
+		if (facility !== undefined) {
+			if (facility.type == data.type) {
+				return true;
 			}
+		}
 
-			return false;
-		}).length;
+		return false;
+	}).length;
 
+	$: cost = data.cost * others;
 	$: rudeness = (
 		$world
 			.find((e) => e.components.find((c) => c.id === 'Rudeness'))
