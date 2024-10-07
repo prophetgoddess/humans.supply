@@ -1,9 +1,6 @@
 <script lang="ts">
 	import Event from './Event.svelte';
 	import { world } from '$lib/EntityStorage';
-	import { Event as EventComponent } from '$lib/Components';
-
-	import { tick } from '$lib/Time';
 
 	$: events = $world.filter((e) => e.components.find((c) => c.id === 'Event')).reverse();
 </script>

@@ -23,12 +23,10 @@ export class RelationData {
 export class Entity {
     id: string;
     components: Component[]
-    relations: RelationData[]
 
     constructor() {
         this.id = uuidv4();
         this.components = [];
-        this.relations = [];
     }
 }
 
@@ -76,20 +74,7 @@ export const world = {
             })
         })
     },
-    relateEntities: (a: Entity, b: Entity, c: Component) => {
-        update((ls) => {
-            return ls.map((en) => {
-                if (en.id === a.id) {
-                    en.relations.push(new RelationData(b, c));
-                }
-                else if (en.id === b.id) {
-                    en.relations.push(new RelationData(a, c));
-                }
 
-                return en;
-            })
-        })
-    },
     set: set
 }
 
