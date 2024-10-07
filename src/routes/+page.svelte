@@ -42,8 +42,8 @@
 	world.setComponent(solitaryConfinement, new Description(names.SolitaryConfinement.description));
 
 	let singleton = world.createEntity();
-	world.setComponent(singleton, new Money(10000));
-	world.setComponent(singleton, new Rudeness(0.01));
+	world.setComponent(singleton, new Money(1000));
+	world.setComponent(singleton, new Rudeness(0.1));
 	world.setComponent(singleton, new Upgrade(1));
 
 	let h = world.createEntity();
@@ -51,40 +51,8 @@
 
 	let h2 = world.createEntity();
 	world.setComponent(h2, new Human());
-
-	$: rudeHumans = $world.reduce((total, e) => {
-		if (
-			e.components.find((c) => c.id === 'Human') !== undefined &&
-			e.components.find((c) => c.id === 'Rude') !== undefined
-		) {
-			return total + 1;
-		}
-		return total;
-	}, 0);
-
-	function easeOutCirc(x: number): number {
-		return Math.sqrt(1 - Math.pow(x - 1, 2));
-	}
-
-	tick.subscribe((value) => {
-		if (rudeHumans === undefined || rudeHumans === 0) {
-			return;
-		}
-
-		let singleton = $world.find((e) => e.components.find((c) => c.id == 'Rudeness') !== undefined);
-
-		if (singleton != undefined) {
-			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
-			let newRudeness = easeOutCirc(rudeHumans / 5000.0);
-			if (rudeness != undefined) {
-				world.setComponent(singleton, new Rudeness(newRudeness * 0.7));
-			}
-		}
-	});
 </script>
 
 <Stats />
-
-<Build />
-
 <Events />
+<Build />

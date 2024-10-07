@@ -67,13 +67,14 @@
 <div class="panel">
 	<div class="panel" style="flex-direction: column; width: 50%; overflow: auto;">
 		<h3>Available Facilities</h3>
-		<button on:click={upgrade}>Upgrade Capacity: ${upgradePrice} (current: {1}x)</button>
 		{#each available as building (building.id)}
 			<Building entity={building} />
 		{/each}
 	</div>
 
 	<div class="panel" style="flex-direction: column; width: 50%; overflow: auto;">
+		<button on:click={upgrade}>Upgrade Capacity: ${upgradePrice} (current: {upgradeLevel}x)</button>
+
 		{#each built as building (building.id)}
 			<Building entity={building} />
 		{/each}

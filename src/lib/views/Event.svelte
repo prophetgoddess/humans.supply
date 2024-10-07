@@ -13,22 +13,3 @@
 		<p>{message}</p>
 	</div>
 </div>
-
-<style>
-	/* The Modal (background) */
-	.modal {
-		display: block;
-		position: absolute;
-		z-index: 1;
-		right: 0;
-		bottom: var(--bottom, 0px);
-		width: 50%;
-	}
-
-	/* Modal Content/Box */
-	.modal-content {
-		background-color: #ffffff;
-		padding: 20px;
-		border: solid;
-	}
-</style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Money, Event } from '$lib/Components';
+	import { Money, Event, Rudeness } from '$lib/Components';
 	import { world } from '$lib/EntityStorage';
 	import { tick } from '$lib/Time';
 	import { events } from '$lib/data/Events';
@@ -54,7 +54,7 @@
 
 	function createMessage(message: string) {
 		let msg = world.createEntity();
-		world.setComponent(msg, new Event(message, 10));
+		world.setComponent(msg, new Event(message));
 	}
 
 	let populationThreshold = 2;
@@ -63,13 +63,15 @@
 	let rudeThreshold = 0;
 	let rudeEventIndex = 0;
 
-	function ease(x: number) {
-		return Math.sin((x * Math.PI) / 2);
+	function ease(x: number): number {
+		return x * x * x;
 	}
 
 	function debugWorld() {
 		console.log($world);
 	}
+
+	createMessage('Welcome to Humans Game!');
 
 	tick.subscribe((value) => {
 		if (populationEventIndex < events.human_repro.length) {
@@ -86,6 +88,24 @@
 				createMessage(events.rude_human[rudeEventIndex]);
 				rudeEventIndex++;
 				rudeThreshold += 10 * rudeEventIndex;
+			}
+		}
+
+		let singleton = $world.find((e) => e.components.find((c) => c.id == 'Rudeness') !== undefined);
+
+		if (singleton != undefined) {
+			let rudeness = singleton.components.find((c) => c.id == 'Rudeness') as Rudeness;
+			let newRudeness = (rudeHumans * 1.1) / population;
+
+			if (population < 3) {
+				newRudeness = 0;
+			} else if (population < 100) {
+				newRudeness = 0.1;
+			}
+
+			if (rudeness != undefined) {
+				0;
+				world.setComponent(singleton, new Rudeness(newRudeness * 0.9));
 			}
 		}
 	});

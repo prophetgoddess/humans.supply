@@ -5,28 +5,23 @@
 
 	import { tick } from '$lib/Time';
 
-	$: events = $world.filter((e) => e.components.find((c) => c.id === 'Event'));
-
-	tick.subscribe((value) => {
-		if (events !== undefined) {
-			for (let event of events) {
-				let eventComponent = event.components.find((c) => c.id === 'Event') as EventComponent;
-				if (eventComponent != undefined) {
-					var ticks = eventComponent.ticks - 1;
-
-					if (ticks > 0) {
-						world.setComponent(event, new EventComponent(eventComponent.message, ticks));
-					} else {
-						world.destroyEntity(event);
-					}
-				}
-			}
-		}
-	});
+	$: events = $world.filter((e) => e.components.find((c) => c.id === 'Event')).reverse();
 </script>
 
-<div>
+<div
+	style="	border-style: solid;
+			margin: 1em;
+			padding: 0.25em;
+            max-height: 150px;
+            min-height: 20%;
+            height: 20%;
+
+            overflow: auto;"
+>
 	{#each events as event, i}
-		<Event --bottom="{(i + 0.25) * 100}px" entity={event} />
+		<Event entity={event} />
+		{#if events.length > 1}
+			<hr />
+		{/if}
 	{/each}
 </div>

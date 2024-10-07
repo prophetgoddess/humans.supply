@@ -183,7 +183,7 @@
 				}
 			} else if (data.type === FacilityType.SolitaryConfinement) {
 				for (let user of users) {
-					if (Math.random() < 0.45) {
+					if (Math.random() < 0.6) {
 						if (changeMoney(-2)) {
 							makeObedient(user);
 						}
