@@ -1,5 +1,8 @@
 
 export const events = {
+    game_start: [
+        "The Gargelmaxian victory over the pitiful human planet of Earth finished only hours after it began. Your people destroyed the entire human planetary population with a spaceborne bioweapon. Only two surviving humans were found: the staff of an orbital weather station. You, a recent graduate from the Gargelmax Xenoagriculture College, have been assigned to manage a human factory farm. Your goal: exploit these humans and transform their biomatter into useful food, construction materials, industrial solvents, and entertainment products."
+    ],
     human_repro: [
         "Congratulations, Facility Manager. You have turned two humans into three. Surely your old professors at the Gargelmax Xenoagriculture School will be pleased with your ingenuity.",
         "As your human population grows, build more facilities for transforming their biomass into useful industrial exports. Human raw ingredients can be used in food, entertainment, building materials, and industrial solvents.",
