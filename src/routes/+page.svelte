@@ -77,5 +77,7 @@
 
 <p>
 	a game by <a href="https://blood.church/">cassandra lugo</a> (programming) and
-	<a href="https://blog.lauramichet.com/">laura michet</a> (writing)
+	<a href="https://blog.lauramichet.com/">laura michet</a> (writing), made for ludum dare 56. this
+	version has fixes and additional content; play the original jam version at
+	<a href="https://old.humans.supply">old.humans.supply</a>.
 </p>
